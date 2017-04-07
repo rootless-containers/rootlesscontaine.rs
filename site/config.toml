@@ -1,0 +1,8 @@
+languageCode = "en-us"
+title = "Rootless Containers"
+baseurl = "https://rootlesscontaine.rs/"
+theme = "base16"
+publishDir = "../docs"
+
+[params]
+	Author = "Aleksa Sarai"

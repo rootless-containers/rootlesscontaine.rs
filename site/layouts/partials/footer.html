@@ -1,0 +1,15 @@
+{{ $dateMissing := eq .Date.Year 1}}
+</div>
+
+<footer>
+  <div class="container">
+	  <span class="copyright">Copyright &copy;
+{{ if eq $dateMissing true }}{{ .Site.LastChange.Format "2006" }}{{ else }}{{ .Date.Format "2006" }}{{ end }}
+{{ .Site.Params.Author }} - <a href="{{ .Site.BaseURL }}">{{ .Site.BaseURL }}</a> is free software,
+licensed under the <a rel="license" href="https://www.gnu.org/license/agpl-3.0.html">AGPLv3+</a> and <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></span>.
+<a href="https://github.com/cyphar/rootlesscontaine.rs">Source Code.</a>
+  </div>
+</footer>
+
+</body>
+</html>

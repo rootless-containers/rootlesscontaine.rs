@@ -1,0 +1,33 @@
+{{ partial "header.html" . }}
+
+<main role="main" class="article">
+  <article class="single" itemscope itemtype="http://schema.org/BlogPosting">
+    <h1 class="headline" itemprop="headline">{{ .Title }}</h1>
+    <section class="body" itemprop="articleBody">
+      {{ .Content }}
+    </section>
+  </article>
+</main>
+
+<!--
+{{ $baseurl := .Site.BaseURL }}
+<main role="main" class="homepage">
+
+  {{ partial "hero.html" . }}
+
+  <div class="article-list">
+    {{ .Content }}
+  </div>
+
+  <h1 class="headline">Recent Posts</h1>
+
+  <div class="article-list">
+    {{ range first 3 (where .Data.Pages "Section" "post") }}
+      {{ partial "article-list-item.html" . }}
+    {{ end }}
+  </div>
+
+</main>
+-->
+
+{{ partial "footer.html" . }}
