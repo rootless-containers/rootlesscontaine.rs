@@ -10,7 +10,7 @@ draft = false
 Rootless containers refers to the ability for an unprivileged user to create,
 run and otherwise manage containers. This term also includes the variety of
 tooling around containers that can also be run as an unprivileged user. The
-goal of this website it catalogue all of the open questions and unresolved
+goal of this website is to catalogue all of the open questions and unresolved
 issues that need to be solved to bring us closer to rootless containers "for
 all".
 
