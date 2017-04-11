@@ -137,12 +137,8 @@ currently the Open Container Initiative <strong>does not</strong> define a distr
 format, so &ldquo;distribution&rdquo; refers to effectively doing <code>rsync</code> or something
 similar. Once distribution is standardised, this requirement will be
 extended.</li>
-<li><input type="checkbox" disabled> Add support to a tool for building
-standardised container images as an unprivileged user.
-
-<ul>
-<li>This is currently <a href="https://github.com/cyphar/orca-build/issues/6">in progress</a>.</li>
-</ul></li>
+<li><input type="checkbox" disabled checked> Add support to a tool for building
+standardised container images as an unprivileged user.</li>
 <li><input type="checkbox" disabled> Add support to a storagedriver
 implementation to operate as an unprivileged user. This is separate from
 &ldquo;extract and manipulate&rdquo; because the naive implementation (just dump
@@ -186,6 +182,13 @@ the root filesystem of an extracted image when doing &ldquo;read-only&rdquo; ope
 on the extracted image. This means that root filesystems on <code>read-only</code> media
 (while <code>umoci</code> is operating on them) may run into issues.</p></li>
 </ul>
+
+<p>Building of images is implemented by <a href="https://github.com/cyphar/orca-build"><code>orca-build</code></a>, which is a
+proof-of-concept wrapper around <code>runc</code>, <code>umoci</code>, and <code>skopeo</code>. There are
+several other container builder projects which may implement this feature in
+the future, but right now <code>orca-build</code> is fast enough and is quite minimal. It
+also has the additional feature of being compatbile with the <code>Dockerfile</code>
+format for specifying build steps.</p>
 
 <h3 id="o2-orchestration">(<code>O2</code>) Orchestration</h3>
 

@@ -112,9 +112,8 @@ box][runc-rootless]. The main restrictions are the following:
   format, so "distribution" refers to effectively doing `rsync` or something
   similar. Once distribution is standardised, this requirement will be
   extended.
-* <input type="checkbox" disabled> Add support to a tool for building
+* <input type="checkbox" disabled checked> Add support to a tool for building
   standardised container images as an unprivileged user.
-  - This is currently [in progress](https://github.com/cyphar/orca-build/issues/6).
 * <input type="checkbox" disabled> Add support to a storagedriver
   implementation to operate as an unprivileged user. This is separate from
   "extract and manipulate" because the naive implementation (just dump
@@ -156,8 +155,16 @@ with some caveats:
   on the extracted image. This means that root filesystems on `read-only` media
   (while `umoci` is operating on them) may run into issues.
 
+Building of images is implemented by [`orca-build`][orca-build], which is a
+proof-of-concept wrapper around `runc`, `umoci`, and `skopeo`. There are
+several other container builder projects which may implement this feature in
+the future, but right now `orca-build` is fast enough and is quite minimal. It
+also has the additional feature of being compatbile with the `Dockerfile`
+format for specifying build steps.
+
 [skopeo]: https://github.com/projectatomic/skopeo
 [umoci]: https://github.com/openSUSE/umoci
+[orca-build]: https://github.com/cyphar/orca-build
 
 ### (`O2`) Orchestration ###
 
