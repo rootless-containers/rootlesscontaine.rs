@@ -196,16 +196,25 @@ rootless container support.
   implement enough of the Open Container Initiative standard (even with
   [`bwrap-oci`][bwrap-oci]) to be a full container runtime.
 
-* [`lxc`][lxc] has implemented quite a substantial portion of rootless containers, but
-  their implementation requires privileged helper binaries to set up `cgroups`
-  and network interfaces. This is a reasonable compromise for a container
-  runtime (and `runc`'s solution was to just ignore those usecases) but it
-  still means that practically it's not possible to use `lxc` in a way that
-  would be required by this project.
+* [`lxc`][lxc] has implemented quite a substantial portion of rootless
+  containers, but their implementation requires privileged helper binaries to
+  set up `cgroups` and network interfaces. This is a reasonable compromise for
+  a container runtime (and `runc`'s solution was to just ignore those
+  usecases), and `lxc` does have knobs to disable the use of those binaries,
+  but it still means that it is still more of a hassle to use `lxc` in a way
+  that would be required by this project.
+
+* [`binctr`][binctr] was a proof-of-concept written by [Jessie
+  Frazelle][jessfraz] and was the inspiration for the upstream rootless
+  container work in runc. It has the interesting additional feature of creating
+  a single static binary that contains both the container runtime and the root
+  filesystem of the container.
 
 [bubblewrap]: https://github.com/projectatomic/bubblewrap
 [bwrap-oci]: https://github.com/projectatomic/bwrap-oci
 [lxc]: https://linuxcontainers.org/lxc/
+[binctr]: https://github.com/jessfraz/binctr
+[jessfraz]: https://blog.jessfraz.com/
 
 ## FAQ ##
 <!-- If there is a question that hasn't been answered here, please open a PR! -->

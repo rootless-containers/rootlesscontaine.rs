@@ -222,12 +222,19 @@ container runtime as an unprivileged user, but to our knowledge it doesn&rsquo;t
 implement enough of the Open Container Initiative standard (even with
 <a href="https://github.com/projectatomic/bwrap-oci"><code>bwrap-oci</code></a>) to be a full container runtime.</p></li>
 
-<li><p><a href="https://linuxcontainers.org/lxc/"><code>lxc</code></a> has implemented quite a substantial portion of rootless containers, but
-their implementation requires privileged helper binaries to set up <code>cgroups</code>
-and network interfaces. This is a reasonable compromise for a container
-runtime (and <code>runc</code>&rsquo;s solution was to just ignore those usecases) but it
-still means that practically it&rsquo;s not possible to use <code>lxc</code> in a way that
-would be required by this project.</p></li>
+<li><p><a href="https://linuxcontainers.org/lxc/"><code>lxc</code></a> has implemented quite a substantial portion of rootless
+containers, but their implementation requires privileged helper binaries to
+set up <code>cgroups</code> and network interfaces. This is a reasonable compromise for
+a container runtime (and <code>runc</code>&rsquo;s solution was to just ignore those
+usecases), and <code>lxc</code> does have knobs to disable the use of those binaries,
+but it still means that it is still more of a hassle to use <code>lxc</code> in a way
+that would be required by this project.</p></li>
+
+<li><p><a href="https://github.com/jessfraz/binctr"><code>binctr</code></a> was a proof-of-concept written by <a href="https://blog.jessfraz.com/">Jessie
+Frazelle</a> and was the inspiration for the upstream rootless
+container work in runc. It has the interesting additional feature of creating
+a single static binary that contains both the container runtime and the root
+filesystem of the container.</p></li>
 </ul>
 
 <h2 id="faq">FAQ</h2>
