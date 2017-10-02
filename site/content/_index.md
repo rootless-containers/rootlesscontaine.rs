@@ -25,7 +25,7 @@ The objectives of this project are to allow an unprivileged user to:
 
 * (**`O0`**) Create, run, and manage containers on their local machine.
 * (**`O1`**) Create, modify, distribute, and extract container images on their
-  local machine so they may run said container images though (**`O0`**).
+  local machine so they may run said container images through (**`O0`**).
 * (**`O2`**) Create, manage, and use a container orchestrator on either their
   local machine (effective a single-node cluster) or on a set of machines they
   would ordinarily be able to communicate with and run unprivileged programs
@@ -143,7 +143,7 @@ with some caveats:
   unprivileged user certain hacks are required. Examples include creating dummy
   files in place of device nodes that an unprivileged user cannot create, and
   forcing everything to be owned by the current unprivileged user. As a result,
-  the results of the image extraction may be counter-inuitive, but a lot of
+  the results of the image extraction may be counter-intuitive, but a lot of
   work has gone into reducing the weirdness of these hacks. In addition, `umoci
   repack` is implemented in such a way that it should not (in normal usage)
   result in an image that has `umoci`'s hacks baked into it (if you run an
@@ -159,7 +159,7 @@ Building of images is implemented by [`orca-build`][orca-build], which is a
 proof-of-concept wrapper around `runc`, `umoci`, and `skopeo`. There are
 several other container builder projects which may implement this feature in
 the future, but right now `orca-build` is fast enough and is quite minimal. It
-also has the additional feature of being compatbile with the `Dockerfile`
+also has the additional feature of being compatible with the `Dockerfile`
 format for specifying build steps.
 
 [skopeo]: https://github.com/projectatomic/skopeo
@@ -179,10 +179,11 @@ with the majority of its functionality working as an unprivileged user.
 
 These tasks do not have much significant progress. However, Cloud Foundry have
 implemented [experimental rootless container support][cf-rootless]. The
-downside to their implementation is that it still requires several privileged
-binaries (thus not making it truly rootless, but it's a great first step).
+downside to their implementation is that it still requires privileged setup
+steps, and a privileged networking binary during the container lifecycle
+(thus not making it truly rootless, but it's a great first step).
 
-[cf-rootless]: https://github.com/cloudfoundry/garden-runc-release/blob/b58ad52d3bc930d79bfe7318a910c772c675f0c6/docs/rootless-containers.md
+[cf-rootless]: https://github.com/cloudfoundry/garden-runc-release/blob/43a4aaf771a18173f1b57a8aec749d16433ad2a7/docs/rootless-containers.md
 
 ## Prior Art ##
 <!-- If we've missed your project, feel free to open a PR! -->
