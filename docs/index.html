@@ -5,7 +5,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="Aleksa Sarai">
-<meta name="generator" content="Hugo 0.19-DEV" />
+<meta name="generator" content="Hugo 0.29" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://rootlesscontaine.rs/css/style.css" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
@@ -54,7 +54,7 @@ granted to them, or for software packages to be installed).</p>
 <ul>
 <li>(<strong><code>O0</code></strong>) Create, run, and manage containers on their local machine.</li>
 <li>(<strong><code>O1</code></strong>) Create, modify, distribute, and extract container images on their
-local machine so they may run said container images though (<strong><code>O0</code></strong>).</li>
+local machine so they may run said container images through (<strong><code>O0</code></strong>).</li>
 <li>(<strong><code>O2</code></strong>) Create, manage, and use a container orchestrator on either their
 local machine (effective a single-node cluster) or on a set of machines they
 would ordinarily be able to communicate with and run unprivileged programs
@@ -170,7 +170,7 @@ filesystem state of the container image as a privileged user, as an
 unprivileged user certain hacks are required. Examples include creating dummy
 files in place of device nodes that an unprivileged user cannot create, and
 forcing everything to be owned by the current unprivileged user. As a result,
-the results of the image extraction may be counter-inuitive, but a lot of
+the results of the image extraction may be counter-intuitive, but a lot of
 work has gone into reducing the weirdness of these hacks. In addition, <code>umoci
 repack</code> is implemented in such a way that it should not (in normal usage)
 result in an image that has <code>umoci</code>&rsquo;s hacks baked into it (if you run an
@@ -187,7 +187,7 @@ on the extracted image. This means that root filesystems on <code>read-only</cod
 proof-of-concept wrapper around <code>runc</code>, <code>umoci</code>, and <code>skopeo</code>. There are
 several other container builder projects which may implement this feature in
 the future, but right now <code>orca-build</code> is fast enough and is quite minimal. It
-also has the additional feature of being compatbile with the <code>Dockerfile</code>
+also has the additional feature of being compatible with the <code>Dockerfile</code>
 format for specifying build steps.</p>
 
 <h3 id="o2-orchestration">(<code>O2</code>) Orchestration</h3>
@@ -204,9 +204,10 @@ creating alternative plugins and swapping out the privileged versions.
 </ul>
 
 <p>These tasks do not have much significant progress. However, Cloud Foundry have
-implemented <a href="https://github.com/cloudfoundry/garden-runc-release/blob/b58ad52d3bc930d79bfe7318a910c772c675f0c6/docs/rootless-containers.md">experimental rootless container support</a>. The
-downside to their implementation is that it still requires several privileged
-binaries (thus not making it truly rootless, but it&rsquo;s a great first step).</p>
+implemented <a href="https://github.com/cloudfoundry/garden-runc-release/blob/43a4aaf771a18173f1b57a8aec749d16433ad2a7/docs/rootless-containers.md">experimental rootless container support</a>. The
+downside to their implementation is that it still requires privileged setup
+steps, and a privileged networking binary during the container lifecycle
+(thus not making it truly rootless, but it&rsquo;s a great first step).</p>
 
 <h2 id="prior-art">Prior Art</h2>
 
