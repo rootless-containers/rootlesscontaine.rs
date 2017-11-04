@@ -71,13 +71,15 @@ The de-facto implementation of the Open Container Initiative's runtime
 specification, [`runc`][runc], supports rootless containers [out of the
 box][runc-rootless]. The main restrictions are the following:
 
-* `cgroups` are not supported, because on the kernel side, unprivileged subtree
-  management has not been implemented. After some discussions with the
-  maintainer of `cgroups` is appears that there are some fundamental
-  disagreements on the importance of unprivileged subtree management (and some
-  of the API decisions made in the past make it difficult to implement). This
-  restricts how many things a user can do with containers (`pause` and `resume`
-  are not implemented, for example).
+* `cgroups` are not supported in the general case, because on the kernel side,
+  unprivileged subtree management has not been implemented. There is a new
+  `nsdelegate` mount option for the **host** cgroup mount (which allows for
+  sub-tree delegation of cgroupv2 when you create a cgroup namespace), but
+  since `runc` supports neither cgroupv2 nor cgroup namespaces this feature is
+  not useful to us at the moment. However, [recently][runc-pr1540] `runc` can
+  opportunistically use cgroups if the system was configured to allow users to
+  use them (see [`lxcfs`'s PAM module][lxcfs] for an example of how such a
+  system can be configured).
 
 * [`criu`][criu] supports unprivileged dumping (`checkpoint`) but `restore` is
   not supported and the `checkpoint`ing aspects have not been well tested in
@@ -98,6 +100,8 @@ box][runc-rootless]. The main restrictions are the following:
 [runc]: https://github.com/opencontainers/runc
 [runc-rootless]: https://github.com/opencontainers/runc/pull/774
 [criu]: https://criu.org/Main_Page
+[runc-pr1540]: https://github.com/opencontainers/runc/pull/1540
+[lxcfs]: https://github.com/lxc/lxcfs
 
 ### (`O1`) Images ###
 
@@ -163,7 +167,7 @@ also has the additional feature of being compatible with the `Dockerfile`
 format for specifying build steps.
 
 [skopeo]: https://github.com/projectatomic/skopeo
-[umoci]: https://github.com/openSUSE/umoci
+[umoci]: https://umo.ci/
 [orca-build]: https://github.com/cyphar/orca-build
 
 ### (`O2`) Orchestration ###

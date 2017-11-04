@@ -5,7 +5,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="Aleksa Sarai">
-<meta name="generator" content="Hugo 0.29" />
+<meta name="generator" content="Hugo 0.30-DEV" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://rootlesscontaine.rs/css/style.css" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
@@ -100,13 +100,15 @@ specification, <a href="https://github.com/opencontainers/runc"><code>runc</code
 box</a>. The main restrictions are the following:</p>
 
 <ul>
-<li><p><code>cgroups</code> are not supported, because on the kernel side, unprivileged subtree
-management has not been implemented. After some discussions with the
-maintainer of <code>cgroups</code> is appears that there are some fundamental
-disagreements on the importance of unprivileged subtree management (and some
-of the API decisions made in the past make it difficult to implement). This
-restricts how many things a user can do with containers (<code>pause</code> and <code>resume</code>
-are not implemented, for example).</p></li>
+<li><p><code>cgroups</code> are not supported in the general case, because on the kernel side,
+unprivileged subtree management has not been implemented. There is a new
+<code>nsdelegate</code> mount option for the <strong>host</strong> cgroup mount (which allows for
+sub-tree delegation of cgroupv2 when you create a cgroup namespace), but
+since <code>runc</code> supports neither cgroupv2 nor cgroup namespaces this feature is
+not useful to us at the moment. However, <a href="https://github.com/opencontainers/runc/pull/1540">recently</a> <code>runc</code> can
+opportunistically use cgroups if the system was configured to allow users to
+use them (see <a href="https://github.com/lxc/lxcfs"><code>lxcfs</code>&rsquo;s PAM module</a> for an example of how such a
+system can be configured).</p></li>
 
 <li><p><a href="https://criu.org/Main_Page"><code>criu</code></a> supports unprivileged dumping (<code>checkpoint</code>) but <code>restore</code> is
 not supported and the <code>checkpoint</code>ing aspects have not been well tested in
@@ -158,7 +160,7 @@ useful for a variety of other tasks. <code>skopeo</code> does not require privil
 any of this core functionality (and in fact, is normally used as an
 unprivileged user).</p>
 
-<p>Extraction, modification, and creation are implemented by <a href="https://github.com/openSUSE/umoci"><code>umoci</code></a>. The
+<p>Extraction, modification, and creation are implemented by <a href="https://umo.ci/"><code>umoci</code></a>. The
 main issue with these operations is the limitations of the filesystem as an
 unprivileged user, since there are a wide variety of operations that are not
 permitted (for security reasons). As a result, <code>umoci</code>&rsquo;s rootless support comes
