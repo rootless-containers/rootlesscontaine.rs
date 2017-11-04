@@ -238,6 +238,17 @@ Frazelle</a> and was the inspiration for the upstream rootless
 container work in runc. It has the interesting additional feature of creating
 a single static binary that contains both the container runtime and the root
 filesystem of the container.</p></li>
+
+<li><p><a href="http://singularity.lbl.gov/"><code>singularity</code></a> was developed in parallel to the <code>runc</code>
+implementation of rootless containers. It is a runtime that was developed for
+HPC requirements, and so has quite a few odd design desisions based on those
+requirements. However, one point of note is that in its default configuration
+it has several <code>setuid</code> binaries that it uses for core operations (such as
+mounting the loopback device used as the rootfs), which make it impractical
+for the use-cases rootless containers were meant to solve. It appears that
+<code>singularity</code> does support user namespaces, but it&rsquo;s not clear whether a
+fully unprivileged setup is commonly used or has enough features to contend
+with <code>runc</code>&rsquo;s rootless containers.</p></li>
 </ul>
 
 <h2 id="faq">FAQ</h2>

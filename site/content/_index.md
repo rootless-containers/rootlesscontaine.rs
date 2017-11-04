@@ -215,11 +215,23 @@ rootless container support.
   a single static binary that contains both the container runtime and the root
   filesystem of the container.
 
+* [`singularity`][singularity] was developed in parallel to the `runc`
+  implementation of rootless containers. It is a runtime that was developed for
+  HPC requirements, and so has quite a few odd design desisions based on those
+  requirements. However, one point of note is that in its default configuration
+  it has several `setuid` binaries that it uses for core operations (such as
+  mounting the loopback device used as the rootfs), which make it impractical
+  for the use-cases rootless containers were meant to solve. It appears that
+  `singularity` does support user namespaces, but it's not clear whether a
+  fully unprivileged setup is commonly used or has enough features to contend
+  with `runc`'s rootless containers.
+
 [bubblewrap]: https://github.com/projectatomic/bubblewrap
 [bwrap-oci]: https://github.com/projectatomic/bwrap-oci
 [lxc]: https://linuxcontainers.org/lxc/
 [binctr]: https://github.com/jessfraz/binctr
 [jessfraz]: https://blog.jessfraz.com/
+[singularity]: http://singularity.lbl.gov/
 
 ## FAQ ##
 <!-- If there is a question that hasn't been answered here, please open a PR! -->
