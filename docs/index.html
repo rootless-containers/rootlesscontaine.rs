@@ -5,7 +5,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="Aleksa Sarai">
-<meta name="generator" content="Hugo 0.30-DEV" />
+<meta name="generator" content="Hugo 0.32.3" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://rootlesscontaine.rs/css/style.css" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
@@ -80,6 +80,10 @@ pull request</a>.</p>
 <ul>
 <li><input type="checkbox" disabled checked> Support rootless containers in a
 standardised container runtime.</li>
+<li><input type="checkbox" disabled checked> Support emulating system calls
+that are not allowed in regular rootless containers.
+(e.g. <code>setgroups(2)</code>, <code>seteuid(2)</code>, <code>chown(2)</code>&hellip;)
+i.e. get <code>apt</code> and <code>yum</code> to work.</li>
 <li><input type="checkbox" disabled> Support checkpointing and restoring
 containers in a standard container runtime. This is separate from the
 &ldquo;standardised container runtime&rdquo; requirement because it is an auxilliary
@@ -123,7 +127,23 @@ containers. Some ideas for solving this are to implement unprivileged <code>veth
 bridges in the kernel, or to implement some sort of unprivileged userspace
 <code>veth</code> bridge implementation. The jury is out on this one at the moment, so
 we just use the host&rsquo;s network namespace and call it a day.</p></li>
+
+<li><p>Some system calls such as <code>setgroups(2)</code>, <code>seteuid(2)</code>, and <code>chown(2)</code> are
+<a href="https://www.cyphar.com/blog/post/20160627-rootless-containers-with-runc">known not to work</a> in rootless containers, unless multiple
+UID/GID mappings are configured with SUID utility binaries (<code>newuidmap(1)</code>,
+<code>newgidmap(1)</code>). Programs such as <code>apt</code> and <code>yum</code> are known to require such
+system calls to work.</p></li>
 </ul>
+
+<p>While <code>setgroups(2)</code> and <code>seteuid(2)</code> are only &ldquo;temporary&rdquo; for the process
+  which executes them, syscalls like <code>chown(2)</code> and <code>mknod(2)</code> actually
+  modify persistent storage and thus rootless container runtimes may wish
+  to persist this data in a interoperable fashion. For this purpose we define
+  <a href="https://github.com/cyphar/rootlesscontaine.rs/tree/master/proto/rootlesscontainers.proto">the <code>user.rootlesscontainers</code> <code>xattr</code> attribute</a>.
+  This is also useful for emulating &ldquo;real root&rdquo; with tools like <a href="https://proot-me.github.io">PRoot</a>
+  or <a href="https://github.com/cyphar/remainroot">remainroot</a>. <a href="https://github.com/AkihiroSuda/runrootless">runROOTLESS</a> provides a forked
+  version of PRoot that implements the <code>user.rootlesscontainers</code> <code>xattr</code>
+  attribute.</p>
 
 <h3 id="o1-images">(<code>O1</code>) Images</h3>
 
@@ -275,7 +295,7 @@ at (<a href="mailto:cyphar@cyphar.com">cyphar@cyphar.com</a>).</p>
 	  <span class="copyright">Copyright &copy;
 2017
 Aleksa Sarai - <a href="https://rootlesscontaine.rs/">https://rootlesscontaine.rs/</a> is free software,
-licensed under the <a rel="license" href="https://www.gnu.org/license/agpl-3.0.html">AGPLv3+</a> and <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></span>.
+licensed under the <a rel="license" href="https://www.gnu.org/license/agpl-3.0.html">AGPLv3+</a>, <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>, and <a rel="license" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.</span>.
 <a href="https://github.com/cyphar/rootlesscontaine.rs">Source Code.</a>
   </div>
 </footer>
