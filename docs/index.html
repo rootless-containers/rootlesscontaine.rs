@@ -5,7 +5,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="Aleksa Sarai">
-<meta name="generator" content="Hugo 0.30-DEV" />
+<meta name="generator" content="Hugo 0.32.3" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://rootlesscontaine.rs/css/style.css" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
@@ -125,8 +125,9 @@ than <code>lo</code>). The standard way of linking network namespaces (<code>vet
 requires privileges in the host, which is not available in rootless
 containers. Some ideas for solving this are to implement unprivileged <code>veth</code>
 bridges in the kernel, or to implement some sort of unprivileged userspace
-<code>veth</code> bridge implementation. The jury is out on this one at the moment, so
-we just use the host&rsquo;s network namespace and call it a day.</p></li>
+<code>veth</code> bridge implementation with <a href="https://github.com/AkihiroSuda/runrootless/tree/f1c2e886d07b280ae1558d04cfe074aa6889a9a4/misc/vde">TAP</a>. The jury
+is out on this one at the moment, so we just use the host&rsquo;s network namespace
+and call it a day.</p></li>
 
 <li><p>Some system calls such as <code>setgroups(2)</code>, <code>seteuid(2)</code>, and <code>chown(2)</code> are
 <a href="https://www.cyphar.com/blog/post/20160627-rootless-containers-with-runc">known not to work</a> in rootless containers, unless multiple
