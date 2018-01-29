@@ -5,7 +5,7 @@
 <meta name="description" content="">
 <meta name="keywords" content="">
 <meta name="author" content="Aleksa Sarai">
-<meta name="generator" content="Hugo 0.30-DEV" />
+<meta name="generator" content="Hugo 0.32.3" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://rootlesscontaine.rs/css/style.css" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
@@ -145,7 +145,13 @@ standardised container images as an unprivileged user.</li>
 implementation to operate as an unprivileged user. This is separate from
 &ldquo;extract and manipulate&rdquo; because the naive implementation (just dump
 everything to a directory) works in principle but is not as efficient as
-using filesystem features to reduce the footprint of extracted images.</li>
+using filesystem features to reduce the footprint of extracted images.
+Even with such naive implementation, we could use reflink for the reduction
+of the footprint when it is available (e.g. on xfs or on btrfs).
+However, reflink can be slow for an image with a large number of files.
+Some Linux distros such as Ubuntu provide support for mounting overlayfs
+within unprivileged user namespaces, but <a href="http://kernel.ubuntu.com/git/ubuntu/ubuntu-artful.git/commit/fs/overlayfs?h=Ubuntu-4.13.0-25.29&amp;id=0a414bdc3d01f3b61ed86cfe3ce8b63a9240eba7">their patch</a>
+hasn&rsquo;t been merged to the upstream kernel.</li>
 </ul>
 
 <p>These requirements are implemented by several different tools, that each solve

@@ -123,6 +123,12 @@ box][runc-rootless]. The main restrictions are the following:
   "extract and manipulate" because the naive implementation (just dump
   everything to a directory) works in principle but is not as efficient as
   using filesystem features to reduce the footprint of extracted images.
+  Even with such naive implementation, we could use reflink for the reduction
+  of the footprint when it is available (e.g. on xfs or on btrfs).
+  However, reflink can be slow for an image with a large number of files.
+  Some Linux distros such as Ubuntu provide support for mounting overlayfs
+  within unprivileged user namespaces, but [their patch][overlayfs-userns]
+  hasn't been merged to the upstream kernel.
 
 These requirements are implemented by several different tools, that each solve
 a piece of the puzzle. These tools can then be combined to create a
@@ -166,6 +172,7 @@ the future, but right now `orca-build` is fast enough and is quite minimal. It
 also has the additional feature of being compatible with the `Dockerfile`
 format for specifying build steps.
 
+[overlayfs-userns]: http://kernel.ubuntu.com/git/ubuntu/ubuntu-artful.git/commit/fs/overlayfs?h=Ubuntu-4.13.0-25.29&id=0a414bdc3d01f3b61ed86cfe3ce8b63a9240eba7
 [skopeo]: https://github.com/projectatomic/skopeo
 [umoci]: https://umo.ci/
 [orca-build]: https://github.com/cyphar/orca-build
