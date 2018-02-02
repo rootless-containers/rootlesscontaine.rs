@@ -53,6 +53,10 @@ pull request][gh].
 
 * <input type="checkbox" disabled checked> Support rootless containers in a
   standardised container runtime.
+* <input type="checkbox" disabled checked> Support emulating system calls
+  that are not allowed in regular rootless containers.
+  (e.g. `setgroups(2)`, `seteuid(2)`, `chown(2)`...)
+  i.e. get `apt` and `yum` to work.
 * <input type="checkbox" disabled> Support checkpointing and restoring
   containers in a standard container runtime. This is separate from the
   "standardised container runtime" requirement because it is an auxilliary
@@ -95,6 +99,22 @@ box][runc-rootless]. The main restrictions are the following:
   `veth` bridge implementation. The jury is out on this one at the moment, so
   we just use the host's network namespace and call it a day.
 
+* Some system calls such as `setgroups(2)`, `seteuid(2)`, and `chown(2)` are
+  [known not to work][aleksa-20160627] in rootless containers, unless multiple
+  UID/GID mappings are configured with SUID utility binaries (`newuidmap(1)`,
+  `newgidmap(1)`). Programs such as `apt` and `yum` are known to require such
+  system calls to work.
+
+ While `setgroups(2)` and `seteuid(2)` are only "temporary" for the process
+  which executes them, syscalls like `chown(2)` and `mknod(2)` actually
+  modify persistent storage and thus rootless container runtimes may wish
+  to persist this data in a interoperable fashion. For this purpose we define
+  [the `user.rootlesscontainers` `xattr` attribute][rootlesscontainers-proto].
+  This is also useful for emulating "real root" with tools like [PRoot][proot]
+  or [remainroot][remainroot]. [runROOTLESS][runrootless] provides a forked
+  version of PRoot that implements the `user.rootlesscontainers` `xattr`
+  attribute.
+
 [jessie-dockerfiles]: https://github.com/jessfraz/dockerfiles
 [jessie-rootless]: https://blog.jessfraz.com/post/ultimate-linux-on-the-desktop/
 [runc]: https://github.com/opencontainers/runc
@@ -102,6 +122,11 @@ box][runc-rootless]. The main restrictions are the following:
 [criu]: https://criu.org/Main_Page
 [runc-pr1540]: https://github.com/opencontainers/runc/pull/1540
 [lxcfs]: https://github.com/lxc/lxcfs
+[aleksa-20160627]: https://www.cyphar.com/blog/post/20160627-rootless-containers-with-runc
+[rootlesscontainers-proto]: https://github.com/cyphar/rootlesscontaine.rs/tree/master/proto/rootlesscontainers.proto
+[proot]: https://proot-me.github.io
+[remainroot]: https://github.com/cyphar/remainroot
+[runrootless]: https://github.com/AkihiroSuda/runrootless
 
 ### (`O1`) Images ###
 
