@@ -37,31 +37,11 @@ If you want to actually compile the site for publishing, just run `hugo
 
 ### License ###
 
-`rootlesscontaine.rs` (the website generator code) is licensed under the terms
-of the GNU AGPLv3 (or later).
-
-```
-Copyright (C) 2017 Aleksa Sarai <cyphar@cyphar.com>
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU Affero General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU Affero General Public License for more details.
-
-You should have received a copy of the GNU Affero General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
-```
-
 The contents under the [`proto`][proto] directory are licensed under the terms
 of the [Apache License 2.0][apache2].
 
 The other contents of the website are licensed under the terms of the [CC-BY-SA
-4.0][cc] license.
+4.0][cc] license. They are copyrighted by their respective authors.
 
 [proto]: ./proto
 [apache2]: http://www.apache.org/licenses/LICENSE-2.0
