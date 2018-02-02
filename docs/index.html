@@ -197,7 +197,10 @@ work has gone into reducing the weirdness of these hacks. In addition, <code>umo
 repack</code> is implemented in such a way that it should not (in normal usage)
 result in an image that has <code>umoci</code>&rsquo;s hacks baked into it (if you run an
 image modified by an unprivileged user as a privileged user it should work
-normally).</p></li>
+normally). However, <code>umoci</code> supports the usage of the previously mentioned
+<a href="https://github.com/cyphar/rootlesscontaine.rs/tree/master/proto/rootlesscontainers.proto"><code>user.rootlesscontainers</code> <code>xattr</code> attribute</a>,
+which means that programs that accept <code>user.rootlesscontainers</code> attributes
+will be able to interoperate correctly.</p></li>
 
 <li><p>Because of how discretionary access control works, <code>umoci</code> may have to modify
 the root filesystem of an extracted image when doing &ldquo;read-only&rdquo; operations

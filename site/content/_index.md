@@ -177,7 +177,10 @@ with some caveats:
   repack` is implemented in such a way that it should not (in normal usage)
   result in an image that has `umoci`'s hacks baked into it (if you run an
   image modified by an unprivileged user as a privileged user it should work
-  normally).
+  normally). However, `umoci` supports the usage of the previously mentioned
+  [`user.rootlesscontainers` `xattr` attribute][rootlesscontainers-proto],
+  which means that programs that accept `user.rootlesscontainers` attributes
+  will be able to interoperate correctly.
 
 * Because of how discretionary access control works, `umoci` may have to modify
   the root filesystem of an extracted image when doing "read-only" operations
