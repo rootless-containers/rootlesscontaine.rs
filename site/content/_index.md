@@ -96,8 +96,9 @@ box][runc-rootless]. The main restrictions are the following:
   requires privileges in the host, which is not available in rootless
   containers. Some ideas for solving this are to implement unprivileged `veth`
   bridges in the kernel, or to implement some sort of unprivileged userspace
-  `veth` bridge implementation. The jury is out on this one at the moment, so
-  we just use the host's network namespace and call it a day.
+  `veth` bridge implementation with [TAP][tap-in-unprivileged-netns]. The jury
+  is out on this one at the moment, so we just use the host's network namespace
+  and call it a day.
 
 * Some system calls such as `setgroups(2)`, `seteuid(2)`, and `chown(2)` are
   [known not to work][aleksa-20160627] in rootless containers, unless multiple
@@ -127,6 +128,7 @@ box][runc-rootless]. The main restrictions are the following:
 [proot]: https://proot-me.github.io
 [remainroot]: https://github.com/cyphar/remainroot
 [runrootless]: https://github.com/AkihiroSuda/runrootless
+[tap-in-unprivileged-netns]: https://github.com/AkihiroSuda/runrootless/tree/f1c2e886d07b280ae1558d04cfe074aa6889a9a4/misc/vde
 
 ### (`O1`) Images ###
 
