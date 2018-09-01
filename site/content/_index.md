@@ -124,7 +124,7 @@ box][runc-rootless]. The main restrictions are the following:
 [runc-pr1540]: https://github.com/opencontainers/runc/pull/1540
 [lxcfs]: https://github.com/lxc/lxcfs
 [aleksa-20160627]: https://www.cyphar.com/blog/post/20160627-rootless-containers-with-runc
-[rootlesscontainers-proto]: https://github.com/cyphar/rootlesscontaine.rs/tree/master/proto/rootlesscontainers.proto
+[rootlesscontainers-proto]: https://github.com/rootless-containers/rootlesscontaine.rs/blob/f7b0f5486bb0e0be75771ce50c54471296f040eb/docs/proto/rootlesscontainers.proto
 [proot]: https://proot-me.github.io
 [remainroot]: https://github.com/cyphar/remainroot
 [runrootless]: https://github.com/AkihiroSuda/runrootless

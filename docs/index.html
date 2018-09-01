@@ -140,7 +140,7 @@ system calls to work.</p></li>
   which executes them, syscalls like <code>chown(2)</code> and <code>mknod(2)</code> actually
   modify persistent storage and thus rootless container runtimes may wish
   to persist this data in a interoperable fashion. For this purpose we define
-  <a href="https://github.com/cyphar/rootlesscontaine.rs/tree/master/proto/rootlesscontainers.proto">the <code>user.rootlesscontainers</code> <code>xattr</code> attribute</a>.
+  <a href="https://github.com/rootless-containers/rootlesscontaine.rs/blob/f7b0f5486bb0e0be75771ce50c54471296f040eb/docs/proto/rootlesscontainers.proto">the <code>user.rootlesscontainers</code> <code>xattr</code> attribute</a>.
   This is also useful for emulating &ldquo;real root&rdquo; with tools like <a href="https://proot-me.github.io">PRoot</a>
   or <a href="https://github.com/cyphar/remainroot">remainroot</a>. <a href="https://github.com/AkihiroSuda/runrootless">runROOTLESS</a> provides a forked
   version of PRoot that implements the <code>user.rootlesscontainers</code> <code>xattr</code>
