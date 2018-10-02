@@ -199,7 +199,7 @@ repack</code> is implemented in such a way that it should not (in normal usage)
 result in an image that has <code>umoci</code>&rsquo;s hacks baked into it (if you run an
 image modified by an unprivileged user as a privileged user it should work
 normally). However, <code>umoci</code> supports the usage of the previously mentioned
-<a href="https://github.com/cyphar/rootlesscontaine.rs/tree/master/proto/rootlesscontainers.proto"><code>user.rootlesscontainers</code> <code>xattr</code> attribute</a>,
+<a href="https://github.com/rootless-containers/rootlesscontaine.rs/blob/f7b0f5486bb0e0be75771ce50c54471296f040eb/docs/proto/rootlesscontainers.proto"><code>user.rootlesscontainers</code> <code>xattr</code> attribute</a>,
 which means that programs that accept <code>user.rootlesscontainers</code> attributes
 will be able to interoperate correctly.</p></li>
 
@@ -263,7 +263,7 @@ container work in runc. It has the interesting additional feature of creating
 a single static binary that contains both the container runtime and the root
 filesystem of the container.</p></li>
 
-<li><p><a href="http://singularity.lbl.gov/"><code>singularity</code></a> was developed in parallel to the <code>runc</code>
+<li><p><a href="https://www.sylabs.io/"><code>singularity</code></a> was developed in parallel to the <code>runc</code>
 implementation of rootless containers. It is a runtime that was developed for
 HPC requirements, and so has quite a few odd design desisions based on those
 requirements. However, one point of note is that in its default configuration

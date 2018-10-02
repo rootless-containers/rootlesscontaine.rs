@@ -261,7 +261,7 @@ rootless container support.
 [lxc]: https://linuxcontainers.org/lxc/
 [binctr]: https://github.com/jessfraz/binctr
 [jessfraz]: https://blog.jessfraz.com/
-[singularity]: http://singularity.lbl.gov/
+[singularity]: https://www.sylabs.io/
 
 ## FAQ ##
 <!-- If there is a question that hasn't been answered here, please open a PR! -->
