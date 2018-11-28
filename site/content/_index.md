@@ -127,7 +127,7 @@ box][runc-rootless]. The main restrictions are the following:
 [rootlesscontainers-proto]: https://github.com/rootless-containers/rootlesscontaine.rs/blob/f7b0f5486bb0e0be75771ce50c54471296f040eb/docs/proto/rootlesscontainers.proto
 [proot]: https://proot-me.github.io
 [remainroot]: https://github.com/cyphar/remainroot
-[runrootless]: https://github.com/AkihiroSuda/runrootless
+[runrootless]: https://github.com/rootless-containers/runrootless
 [tap-in-unprivileged-netns]: https://github.com/AkihiroSuda/runrootless/tree/f1c2e886d07b280ae1558d04cfe074aa6889a9a4/misc/vde
 
 ### (`O1`) Images ###
