@@ -3,6 +3,7 @@ title = "Rootless Containers"
 baseurl = "https://rootlesscontaine.rs/"
 theme = "base16"
 publishDir = "../docs"
+enableemoji = true
 
 [params]
 	Author = "Aleksa Sarai"
