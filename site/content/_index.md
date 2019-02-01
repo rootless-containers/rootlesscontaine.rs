@@ -19,6 +19,15 @@ administrative rights, and is "not in the good graces of the administrator" (in
 other words, they do not have the ability to ask for more privileges to be
 granted to them, or for software packages to be installed).
 
+<iframe src="https://www.slideshare.net/slideshow/embed_code/key/nJyXOTcSJaz0cL" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <a href="https://www.slideshare.net/AkihiroSuda/rootless-containers" title="Rootless Containers" target="_blank">Our talk at DevConf.cz 2019</a></div>
+
+- - -
+# :warning: OUTDATED CONTENTS :warning: #
+
+The following contents are outdated and planned to be updated.
+
+For a while, please refer to the slide deck above.
+
 ### Objectives ###
 
 The objectives of this project are to allow an unprivileged user to:
