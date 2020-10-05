@@ -18,7 +18,7 @@ SRC := site
 
 .PHONY: serve
 serve:
-	hugo --source=$(SRC)
+	hugo server --source=$(SRC)
 
 docs: $(shell find site)
-	hugo server --source=$(SRC)
+	hugo --source=$(SRC)
