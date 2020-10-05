@@ -1,9 +1,26 @@
 languageCode = "en-us"
 title = "Rootless Containers"
 baseurl = "https://rootlesscontaine.rs/"
-theme = "base16"
+theme = "hugo-geekdoc"
 publishDir = "../docs"
 enableemoji = true
 
+# Geekdoc required configuration
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+disablePathToLower = true
+
+# Needed for mermaid shortcodes
+[markup]
+  [markup.goldmark.renderer]
+    # Needed for mermaid shortcode
+    unsafe = true
+  [markup.tableOfContents]
+    startLevel = 1
+    endLevel = 9
+
 [params]
-	Author = "Aleksa Sarai"
+  Author = "Aleksa Sarai, Akihiro Suda, and Giuseppe Scrivano"
+  geekdocToC = 3
+  geekdocSearch = true
+  geekdocLegalNotice = "legal"
