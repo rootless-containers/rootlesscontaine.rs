@@ -9,6 +9,7 @@ enableemoji = true
 pygmentsUseClasses = true
 pygmentsCodeFences = true
 disablePathToLower = true
+enableGitInfo = true
 
 # Needed for mermaid shortcodes
 [markup]
@@ -22,5 +23,7 @@ disablePathToLower = true
 [params]
   Author = "Aleksa Sarai, Akihiro Suda, and Giuseppe Scrivano"
   geekdocToC = 3
+  geekdocRepo = "https://github.com/rootless-containers/rootlesscontaine.rs"
+  geekdocEditPath = "edit/master/site/content"
   geekdocSearch = true
   geekdocLegalNotice = "legal"
