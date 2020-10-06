@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rootless Containers</title>
+    <link>https://rootlesscontaine.rs/</link>
+    <description>Recent content on Rootless Containers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://rootlesscontaine.rs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Login</title>
+      <link>https://rootlesscontaine.rs/getting-started/common/login/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/common/login/</guid>
+      <description>Most Rootless Containers implementations need the $XDG_RUNTIME_DIR environmental variable to be set. When the environment variable is not set, features related to systemd and cgroups are unlikely to work properly.
+The value is typically set to /run/user/$UID automatically by systemd or elogind on logging into the host.
+Run the following command to confirm:
+$ echo $XDG_RUNTIME_DIR /run/user/1000 The $XDG_RUNTIME_DIR environmental variable is set when:
+ Logged in as a non-root user via the graphic console .</description>
+    </item>
+    
+    <item>
+      <title>User Namespaces</title>
+      <link>https://rootlesscontaine.rs/how-it-works/userns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/how-it-works/userns/</guid>
+      <description>Rootless containers uses user_namespaces(7)(UserNS) for emulating fake privileges that are enough to create containers.
+e.g. map UID 1000 to pseudo-root UID 0 in the UserNS:
+$ whoami user1 $ id -u 1000 $ unshare --user --map-root-user # cat /proc/self/uid_map 0 1000 1 # cat /proc/self/gid_map 0 1000 1 # id -u 0 The pseudo-root user gains capabilities such as CAP_SYS_ADMIN and CAP_NET_ADMIN inside UserNS to perform fake-privileged operations such as creating mount namespaces, network namespaces, and creating TAP devices.</description>
+    </item>
+    
+    <item>
+      <title>Configure sysctl</title>
+      <link>https://rootlesscontaine.rs/getting-started/common/sysctl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/common/sysctl/</guid>
+      <description>Debian, Arch, and RHEL/CentOS 7 are known to require reconfiguration of sysctl to enable User Namespaces.
+Debian GNU/Linux  Note
+These steps are not needed for Ubuntu.
+ Create /etc/sysctl.d/99-rootless.conf with the following content:
+kernel.unprivileged_userns_clone=1 And then run the following command to reload the new sysctl configuration:
+$ sudo sysctl --system Optional: To enable overlay filesystem, create /etc/modprobe.d/overlay.conf with the following content, and then reboot.
+options overlay permit_mounts_in_userns=1   Arch Linux  Create /etc/sysctl.</description>
+    </item>
+    
+    <item>
+      <title>Docker/Moby</title>
+      <link>https://rootlesscontaine.rs/getting-started/docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/docker/</guid>
+      <description>Rootless Docker/Moby was initially proposed in early 2018 and has been merged to the Docker/Moby upstream since Docker 19.03.
+Docker 19.03 provides almost full features for Rootless mode, including support for port fowarding (docker run -p) and multi-container networking (docker network create), but it doesn&amp;rsquo;t support limiting resources with cgroup.
+Docker 20.10 (beta as of October 2020) added support for limiting resources using cgroup v2.
+Installation Note
+Please read the common steps first.</description>
+    </item>
+    
+    <item>
+      <title>Outgoing connections</title>
+      <link>https://rootlesscontaine.rs/how-it-works/netns/outgoing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/how-it-works/netns/outgoing/</guid>
+      <description>Unsharing network namespaces isn&amp;rsquo;t only for assigning IP addresses; it is also essential to protect abstract UNIX sockets on the host from containerized processes.
+However, unsharing network namespaces for Rootless Containers isn&amp;rsquo;t straightforward, because vEth pairs cannot be created across UserNS boundaries without the privilege.
+LXC uses a SETUID binary called lxc-user-nic for setting up vEth pairs.
+Other implementations including Docker/Moby and Podman typically use TAP devices instead of vEth pairs, and run a usermode network stack called slirp, which translates Ethernet packets to unprivileged socket system calls.</description>
+    </item>
+    
+    <item>
+      <title>Podman</title>
+      <link>https://rootlesscontaine.rs/getting-started/podman/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/podman/</guid>
+      <description>The following table shows the feature implementation status of Rootless Podman:
+   Version Notable changes     Pre-1.1 Initial support for Rootless mode   1.1 Added support for port forwarding (podman run -p)   1.5 Added support for cgroup v2   2.1 Added support for multi-container networking (podman create network)    FAQ: Docker/Moby vs Podman?
+Until recently, Docker/Moby had lacked support for cgroup v2, and on the other hand Podman had lacked support for multi-container networking.</description>
+    </item>
+    
+    <item>
+      <title>BuildKit</title>
+      <link>https://rootlesscontaine.rs/getting-started/buildkit/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/buildkit/</guid>
+      <description>Note
+Please read the common steps first.
+ See https://github.com/moby/buildkit/blob/master/docs/rootless.md</description>
+    </item>
+    
+    <item>
+      <title>Umoci</title>
+      <link>https://rootlesscontaine.rs/getting-started/umoci/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/umoci/</guid>
+      <description>See https://umo.ci/quick-start/rootless/</description>
+    </item>
+    
+    <item>
+      <title>/etc/subuid and /etc/subgid</title>
+      <link>https://rootlesscontaine.rs/getting-started/common/subuid/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/common/subuid/</guid>
+      <description>Rootless Containers implementations mostly expect /etc/subuid to contain at least 65,536 subuids.
+In the following example, 65,536 subuids (100000-165535) are allocated for a user named &amp;ldquo;user1&amp;rdquo;.
+$ cat /etc/subuid user1:100000:65536 The same applies to subgids defined in /etc/subgid. See also How it works/User Namespaces.
+These subuids and subgids are typically automatically configured by the system.
+If subuids and subgids are not configured, you need to edit /etc/subuid and /etc/subgid directly with a text editor:</description>
+    </item>
+    
+    <item>
+      <title>containerd</title>
+      <link>https://rootlesscontaine.rs/getting-started/containerd/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/containerd/</guid>
+      <description>Note
+Please read the common steps first.
+ See https://github.com/containerd/containerd/blob/master/docs/rootless.md</description>
+    </item>
+    
+    <item>
+      <title>Incoming connections</title>
+      <link>https://rootlesscontaine.rs/how-it-works/netns/incoming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/how-it-works/netns/incoming/</guid>
+      <description>Connections incoming from the Internet cannot directly reach network namespaces.
+Two forwarder implementations are used for transferring connections to Rootless Containers&#39; network namespaces.
+RootlessKit The RootlessKit implementation is used by both Docker/Moby and Podman.
+slirp4netns slirp4netns also has its own port forwarder.
+The slirp4netns implementation is slower than RootlessKit, however, the slirp4netns implementation can keep source IP addresses, while the RootlessKit implementation treats all connections as if they were from 127.</description>
+    </item>
+    
+    <item>
+      <title>OverlayFS</title>
+      <link>https://rootlesscontaine.rs/how-it-works/overlayfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/how-it-works/overlayfs/</guid>
+      <description>The upstream kernel still doesn&amp;rsquo;t support mounting OverlayFS inside UserNS, though Ubuntu and Debian support it by patching the kernel.
+On other distros, Rootless Containers typically use fuse-overlayfs instead of the real OverlayFS.</description>
+    </item>
+    
+    <item>
+      <title>[Optional] cgroup v2</title>
+      <link>https://rootlesscontaine.rs/getting-started/common/cgroup2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/common/cgroup2/</guid>
+      <description>Note
+Enabling cgroup v2 is optional.
+ Enabling cgroup v2 is often needed for running Rootless Containers with limiting the consumption of the CPU, memory, I/O, and PIDs resources, e.g. docker run --memory 32m.
+Note that cgroup is not needed for just limiting resources with traditional ulimit and cpulimit, though they work in process-granularity rather than in container-granularity. See here for the further information.
+Checking whether cgroup v2 is already enabled If /sys/fs/cgroup/cgroup.</description>
+    </item>
+    
+    <item>
+      <title>runc</title>
+      <link>https://rootlesscontaine.rs/getting-started/runc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/runc/</guid>
+      <description>Note
+Please read the common steps first.
+ See https://github.com/opencontainers/runc/#rootless-containers</description>
+    </item>
+    
+    <item>
+      <title>Cgroups</title>
+      <link>https://rootlesscontaine.rs/how-it-works/cgroups/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/how-it-works/cgroups/</guid>
+      <description>v1 Delegating cgroup v1 controllers to non-root users is not considered to be safe. So, most Rootless Containers implementations do not support using cgroups on cgroup v1 hosts.
+However, LXC supports delegating cgroup v1 to non-root users by using a PAM module called pam_cgfs.
+v2 Unlike cgroup v1, cgroup v2 officially supports delegation. Most Rootless Containers implementations rely on systemd for delegating v2 controllers to non-root users. See Getting Started/Common/Cgroup v2 for the actual configuration.</description>
+    </item>
+    
+    <item>
+      <title>LXC</title>
+      <link>https://rootlesscontaine.rs/getting-started/lxc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/lxc/</guid>
+      <description>Note
+Please read the common steps first.
+ Running unprivileged LXC To be documented.</description>
+    </item>
+    
+    <item>
+      <title>Singularity</title>
+      <link>https://rootlesscontaine.rs/getting-started/singularity/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/singularity/</guid>
+      <description>Note
+Please read the common steps first.
+ Singularity provides two modes for running containers as a non-root user:
+ SETUID mode Fakeroot mode  The former one does not fall into the scope of Rootless Containers, as the actual runtime binary gains the root privileges via the SETUID bit.
+The latter one falls into our scope, but it should be noted that it does not support creating network namespaces with Internet connectivity.</description>
+    </item>
+    
+    <item>
+      <title>udocker</title>
+      <link>https://rootlesscontaine.rs/getting-started/udocker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/udocker/</guid>
+      <description>Note
+Please read the common steps first.
+ Note
+udocker is not Docker.
+ udocker provides four modes for running containers as a non-root user:
+ Pn: Proot mode Fn: fakechroot mode Rn: rootless runc mode Sn: Singularity mode  The third mode (Rn) falls into the scope of Rootless Containers, but the others are not: Pn and Fn are not containers (in our view), and Sn requires SETUID bit.</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>https://rootlesscontaine.rs/getting-started/kubernetes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/kubernetes/</guid>
+      <description>Note
+Please read the common steps first.
+ We have been proposing our patchset for supporting Rootless mode to the Kubernetes upstream, but our proposal has not been merged yet: https://github.com/kubernetes/enhancements/pull/1371
+Usernetes Usernetes is our reference Kubernetes distribution to support Rootless mode.
+See https://github.com/rootless-containers/usernetes
+$ tar xjvf usernetes-x86_64.tbz $ cd usernetes $ ./install.sh --cri=containerd --cgroup-manager=systemd $ export KUBECONFIG=&amp;quot;$HOME/.config/usernetes/master/admin-localhost.kubeconfig&amp;quot; $ kubectl apply -f manifests/*.yaml k3s k3s supports Rootless mode using our Usernetes patchset.</description>
+    </item>
+    
+  </channel>
+</rss>
