@@ -5,6 +5,14 @@ draft = false
 
 +++
 
+# :yellow_circle: 2020 edition is coming soon #
+
+The 2020 edition of our website is currently WIP.
+
+See https://github.com/rootless-containers/rootlesscontaine.rs/pull/19 for
+the latest contents under review.
+
+- - -
 ## Overview ##
 
 Rootless containers refers to the ability for an unprivileged user to create,
