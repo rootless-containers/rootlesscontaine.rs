@@ -1,320 +1,715 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
-<meta charset="utf-8">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="Aleksa Sarai">
-<meta name="generator" content="Hugo 0.53" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://rootlesscontaine.rs/css/style.css" type="text/css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700" type="text/css">
-<link rel="alternate" href="https://rootlesscontaine.rs/index.xml" type="application/rss+xml" title="Rootless Containers">
-<title>Rootless Containers</title>
-</head>
-<body>
+<html lang="en">
 
-<header>
-  <div class="container clearfix">
-    <a class="path" href="https://rootlesscontaine.rs/">[Rootless Containers]</a>
-    <span class="caret"># _</span>
-    <div class="right">
-      
+<head>
+	<meta name="generator" content="Hugo 0.76.5" />
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Rootless Containers">
+
+<title>Rootless Containers | Rootless Containers</title>
+
+<link rel="icon" href="/favicon/favicon-32x32.png" type="image/x-icon">
+<link rel="stylesheet" href="/main.min.css" media="screen">
+<link rel="stylesheet" href="/custom.css" media="screen">
+
+<link rel="alternate" type="application/rss+xml" href="https://rootlesscontaine.rs/index.xml" title="Rootless Containers" />
+<!--Made with Geekdoc theme https://github.com/xoxys/hugo-geekdoc-->
+
+</head>
+
+<body>
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol viewBox="0 0 24 24" id="arrow_back" xmlns="http://www.w3.org/2000/svg"><path d="M20.016 11.016v1.969H7.828l5.578 5.625L12 20.016 3.984 12 12 3.984l1.406 1.406-5.578 5.625h12.188z"/></symbol><symbol viewBox="0 0 24 24" id="arrow_left_alt" xmlns="http://www.w3.org/2000/svg"><path d="M7.969 11.016v-3L3.985 12l3.984 3.984v-3h12.047v-1.969H7.969z"/></symbol><symbol viewBox="0 0 24 24" id="arrow_right_alt" xmlns="http://www.w3.org/2000/svg"><path d="M16.031 11.016v-3L20.015 12l-3.984 3.984v-3H3.984v-1.969h12.047z"/></symbol><symbol viewBox="0 0 24 24" id="bookmark" xmlns="http://www.w3.org/2000/svg"><path d="M15 5.016q.797 0 1.406.586t.609 1.383v16.031l-7.031-3-6.984 3V6.985q0-.797.609-1.383t1.406-.586h9.984zM18.984 18V5.016q0-.797-.586-1.406t-1.383-.609H6.984q0-.797.609-1.406T8.999.986h9.984q.797 0 1.406.609t.609 1.406v15.984z"/></symbol><symbol viewBox="0 0 16 28" id="code" xmlns="http://www.w3.org/2000/svg"><path d="M4.5 23a1.5 1.5 0 10-3.001.001A1.5 1.5 0 004.5 23zm0-18a1.5 1.5 0 10-3.001.001A1.5 1.5 0 004.5 5zm10 2a1.5 1.5 0 10-3.001.001A1.5 1.5 0 0014.5 7zM16 7a3.002 3.002 0 01-1.5 2.594c-.047 5.641-4.047 6.891-6.703 7.734C5.313 18.109 4.5 18.484 4.5 20v.406A3 3 0 016 23a3.001 3.001 0 01-6 0c0-1.109.609-2.078 1.5-2.594V7.594A3 3 0 010 5a3.001 3.001 0 016 0 3.002 3.002 0 01-1.5 2.594v7.766c.797-.391 1.641-.656 2.406-.891 2.906-.922 4.562-1.609 4.594-4.875A3 3 0 0110 7a3.001 3.001 0 016 0z"/></symbol><symbol viewBox="0 0 24 24" id="date" xmlns="http://www.w3.org/2000/svg"><path d="M18.984 20.016V9H5.015v11.016h13.969zm0-16.032q.797 0 1.406.609t.609 1.406v14.016q0 .797-.609 1.383t-1.406.586H5.015q-.844 0-1.43-.563t-.586-1.406V5.999q0-.797.586-1.406t1.43-.609h.984V2.015h2.016v1.969h7.969V2.015H18v1.969h.984zm-1.968 7.032v1.969H15v-1.969h2.016zm-4.032 0v1.969h-1.969v-1.969h1.969zm-3.984 0v1.969H6.984v-1.969H9z"/></symbol><symbol viewBox="0 0 24 24" id="download" xmlns="http://www.w3.org/2000/svg"><path d="M5.016 18h13.969v2.016H5.016V18zm13.968-9L12 15.984 5.016 9H9V3h6v6h3.984z"/></symbol><symbol viewBox="0 0 24 24" id="email" xmlns="http://www.w3.org/2000/svg"><path d="M20.016 8.016V6L12 11.016 3.984 6v2.016L12 12.985zm0-4.032q.797 0 1.383.609t.586 1.406v12q0 .797-.586 1.406t-1.383.609H3.985q-.797 0-1.383-.609t-.586-1.406v-12q0-.797.586-1.406t1.383-.609h16.031z"/></symbol><symbol viewBox="0 0 24 28" id="github" xmlns="http://www.w3.org/2000/svg"><path d="M12 2c6.625 0 12 5.375 12 12 0 5.297-3.437 9.797-8.203 11.391-.609.109-.828-.266-.828-.578 0-.391.016-1.687.016-3.297 0-1.125-.375-1.844-.812-2.219 2.672-.297 5.484-1.313 5.484-5.922 0-1.313-.469-2.375-1.234-3.219.125-.313.531-1.531-.125-3.187-1-.313-3.297 1.234-3.297 1.234a11.28 11.28 0 00-6 0S6.704 6.656 5.704 6.969c-.656 1.656-.25 2.875-.125 3.187-.766.844-1.234 1.906-1.234 3.219 0 4.594 2.797 5.625 5.469 5.922-.344.313-.656.844-.766 1.609-.688.313-2.438.844-3.484-1-.656-1.141-1.844-1.234-1.844-1.234-1.172-.016-.078.734-.078.734.781.359 1.328 1.75 1.328 1.75.703 2.141 4.047 1.422 4.047 1.422 0 1 .016 1.937.016 2.234 0 .313-.219.688-.828.578C3.439 23.796.002 19.296.002 13.999c0-6.625 5.375-12 12-12zM4.547 19.234c.031-.063-.016-.141-.109-.187-.094-.031-.172-.016-.203.031-.031.063.016.141.109.187.078.047.172.031.203-.031zm.484.532c.063-.047.047-.156-.031-.25-.078-.078-.187-.109-.25-.047-.063.047-.047.156.031.25.078.078.187.109.25.047zm.469.703c.078-.063.078-.187 0-.297-.063-.109-.187-.156-.266-.094-.078.047-.078.172 0 .281s.203.156.266.109zm.656.656c.063-.063.031-.203-.063-.297-.109-.109-.25-.125-.313-.047-.078.063-.047.203.063.297.109.109.25.125.313.047zm.891.391c.031-.094-.063-.203-.203-.25-.125-.031-.266.016-.297.109s.063.203.203.234c.125.047.266 0 .297-.094zm.984.078c0-.109-.125-.187-.266-.172-.141 0-.25.078-.25.172 0 .109.109.187.266.172.141 0 .25-.078.25-.172zm.906-.156c-.016-.094-.141-.156-.281-.141-.141.031-.234.125-.219.234.016.094.141.156.281.125s.234-.125.219-.219z"/></symbol><symbol viewBox="0 0 28 28" id="heart" xmlns="http://www.w3.org/2000/svg"><path d="M14 26c-.25 0-.5-.094-.688-.281l-9.75-9.406c-.125-.109-3.563-3.25-3.563-7C-.001 4.735 2.796 2 7.468 2c2.734 0 5.297 2.156 6.531 3.375C15.233 4.156 17.796 2 20.53 2c4.672 0 7.469 2.734 7.469 7.313 0 3.75-3.437 6.891-3.578 7.031l-9.734 9.375a.972.972 0 01-.688.281z"/></symbol><symbol viewBox="0 0 24 24" id="link" xmlns="http://www.w3.org/2000/svg"><path d="M17.016 6.984q2.063 0 3.516 1.477T21.985 12t-1.453 3.539-3.516 1.477h-4.031v-1.922h4.031q1.266 0 2.18-.914T20.11 12t-.914-2.18-2.18-.914h-4.031V6.984h4.031zm-9 6v-1.969h7.969v1.969H8.016zM3.891 12q0 1.266.914 2.18t2.18.914h4.031v1.922H6.985q-2.063 0-3.516-1.477T2.016 12t1.453-3.539 3.516-1.477h4.031v1.922H6.985q-1.266 0-2.18.914T3.891 12z"/></symbol><symbol viewBox="0 0 24 24" id="menu" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2.016H3V6zm0 6.984v-1.969h18v1.969H3zM3 18v-2.016h18V18H3z"/></symbol><symbol viewBox="0 0 24 24" id="notification" xmlns="http://www.w3.org/2000/svg"><path d="M18 15.984L20.016 18v.984H3.985V18l2.016-2.016v-4.969q0-2.344 1.195-4.078t3.305-2.25v-.703q0-.609.422-1.055t1.078-.445 1.078.445.422 1.055v.703q2.109.516 3.305 2.25t1.195 4.078v4.969zm-6 6q-.844 0-1.43-.563t-.586-1.406h4.031q0 .797-.609 1.383T12 21.984z"/></symbol><symbol viewBox="0 0 24 24" id="path" xmlns="http://www.w3.org/2000/svg"><path d="M21.984 11.016H15v-3h-2.016v7.969H15v-3h6.984v8.016H15v-3h-3.984V8.017H9v3H2.016V3.001H9v3h6v-3h6.984v8.016z"/></symbol><symbol viewBox="0 0 24 24" id="person" xmlns="http://www.w3.org/2000/svg"><path d="M12 14.016q2.531 0 5.273 1.102t2.742 2.883v2.016H3.984v-2.016q0-1.781 2.742-2.883t5.273-1.102zM12 12q-1.641 0-2.813-1.172T8.015 8.015t1.172-2.836T12 3.984t2.813 1.195 1.172 2.836-1.172 2.813T12 12z"/></symbol><symbol viewBox="0 0 24 24" id="search" xmlns="http://www.w3.org/2000/svg"><path d="M9.516 14.016q1.875 0 3.188-1.313t1.313-3.188-1.313-3.188-3.188-1.313-3.188 1.313-1.313 3.188 1.313 3.188 3.188 1.313zm6 0l4.969 4.969-1.5 1.5-4.969-4.969v-.797l-.281-.281q-1.781 1.547-4.219 1.547-2.719 0-4.617-1.875T3.001 9.516t1.898-4.617 4.617-1.898 4.594 1.898 1.875 4.617q0 .984-.469 2.227t-1.078 1.992l.281.281h.797z"/></symbol><symbol viewBox="0 0 20 28" id="shield" xmlns="http://www.w3.org/2000/svg"><path d="M17 15V5h-7v17.766c.797-.422 2.078-1.156 3.328-2.141C15 19.312 17 17.266 17 15zm3-12v12c0 6.578-9.203 10.734-9.594 10.906-.125.063-.266.094-.406.094s-.281-.031-.406-.094C9.203 25.734 0 21.578 0 15V3c0-.547.453-1 1-1h18c.547 0 1 .453 1 1z"/></symbol><symbol viewBox="0 0 32 32" id="tags" xmlns="http://www.w3.org/2000/svg"><path d="M5 5c-1.104 0-2 .887-2 2v8l13.381 13.381c.716.716 1.838.78 2.62.191L5 14.5V5.007 5zm11-1l13.381 13.381c.783.783.787 2.051.008 2.831l-7.177 7.177a2.003 2.003 0 01-2.831-.008L6 14V6c0-1.112.895-2 2-2h8zm-4.5 7a1.5 1.5 0 10-.001-3.001A1.5 1.5 0 0011.5 11z"/></symbol><symbol viewBox="0 0 35 32" id="telescope" xmlns="http://www.w3.org/2000/svg"><path d="M27.464 2.314a.501.501 0 00-.698-.257L14.86 8.339a.499.499 0 00-.233.621l.245.641-6.873 3.769a.5.5 0 00-.222.63l.228.549-7.299 3.488a.5.5 0 00-.246.643l1.498 3.61a.5.5 0 00.629.28l7.625-2.701.228.549a.5.5 0 00.601.289l7.276-2.097.218.569a.497.497 0 00.612.299l13-4a.498.498 0 00.317-.663l-5-12.501zM2.7 21.469l-1.134-2.734 6.823-3.261 1.439 3.47L2.7 21.469zm8.491-1.846l-.238-.574-1.843-4.445-.238-.573 6.336-3.475 2.374 6.134.375.981-6.766 1.952zm8.109-1.238l-.203-.531c-.003-.011-.001-.024-.006-.035l-.618-1.597-2.754-7.206 11.023-5.815 4.592 11.48L19.3 18.385zM28.964.314a.5.5 0 00-.929.371l6 15a.502.502 0 00.651.279.501.501 0 00.279-.65l-6.001-15zM18 21h-3c-1.14 0-2 .86-2 2v1.315l-5.879 6.859a.5.5 0 10.758.651L13.73 25H16v6.5a.5.5 0 001 0V25h2.27l5.85 6.825a.497.497 0 00.705.054.5.5 0 00.054-.705L20 24.315v-1.24C20 21.912 19.122 21 18 21zm1 3h-5v-1c0-.589.411-1 1-1h3c.57 0 1 .462 1 1.075V24z"/></symbol></svg>
+
+    <div class="wrapper">
+        <input type="checkbox" class="hidden" id="menu-control" />
+        <header class="gdoc-header">
+    <div class="container flex align-center justify-between">
+        
+        <label for="menu-control" class="gdoc-nav__control">
+            <svg class="icon menu"><use xlink:href="#menu"></use></svg>
+            <svg class="icon arrow-back"><use xlink:href="#arrow_back"></use></svg>
+        </label>
+        
+        <a class="gdoc-header__link" href="https://rootlesscontaine.rs/">
+            <span class="gdoc-brand flex align-center">
+                <img class="gdoc-brand__img" src="/brand.svg" alt="Rootless Containers" width=38 height=38>
+                Rootless Containers
+            </span>
+        </a>
     </div>
-  </div>
 </header>
 
-<div class="container">
+
+        <main class="container flex flex-even">
+            <aside class="gdoc-nav">
+                <nav>
+    
+    <div class="gdoc-search">
+        <svg class="icon search"><use xlink:href="#search"></use></svg>
+        <input type="text" id="gdoc-search-input" class="gdoc-search__input" placeholder="Search..."
+            aria-label="Search" maxlength="64" />
+        <div class="gdoc-search__spinner spinner hidden"></div>
+        <ul id="gdoc-search-results" class="gdoc-search__list"></ul>
+    </div>
 
 
-<main role="main" class="article">
-  <article class="single" itemscope itemtype="http://schema.org/BlogPosting">
-    <h1 class="headline" itemprop="headline">Rootless Containers</h1>
-    <section class="body" itemprop="articleBody">
-      
 
-<h2 id="overview">Overview</h2>
+    <section class="gdoc-nav--main">
+        <h2>Navigation</h2>
+        
+            
+
+    
+
+    <ul class="gdoc-nav__list">
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/" class="gdoc-nav__entry ">
+                        Getting Started
+                    </a>
+                </span>
+            
+
+            
+            
+                
+    
+
+    <ul class="gdoc-nav__list">
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/common/" class="gdoc-nav__entry ">
+                        Common steps (Read first!)
+                    </a>
+                </span>
+            
+
+            
+            
+                
+    
+
+    <ul class="gdoc-nav__list">
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/common/login/" class="gdoc-nav__entry ">
+                        Login
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/common/sysctl/" class="gdoc-nav__entry ">
+                        Configure sysctl
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/common/subuid/" class="gdoc-nav__entry ">
+                        /etc/subuid and /etc/subgid
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/common/cgroup2/" class="gdoc-nav__entry ">
+                        [Optional] cgroup v2
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+    </ul>
+
+            
+            </li>
+            
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/docker/" class="gdoc-nav__entry ">
+                        Docker/Moby
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/podman/" class="gdoc-nav__entry ">
+                        Podman
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/buildkit/" class="gdoc-nav__entry ">
+                        BuildKit
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/umoci/" class="gdoc-nav__entry ">
+                        Umoci
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/containerd/" class="gdoc-nav__entry ">
+                        containerd
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/runc/" class="gdoc-nav__entry ">
+                        runc
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/lxc/" class="gdoc-nav__entry ">
+                        LXC
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/singularity/" class="gdoc-nav__entry ">
+                        Singularity
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/udocker/" class="gdoc-nav__entry ">
+                        udocker
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/getting-started/kubernetes/" class="gdoc-nav__entry ">
+                        Kubernetes
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+    </ul>
+
+            
+            </li>
+            
+            
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/how-it-works/" class="gdoc-nav__entry ">
+                        How it works
+                    </a>
+                </span>
+            
+
+            
+            
+                
+    
+
+    <ul class="gdoc-nav__list">
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/how-it-works/userns/" class="gdoc-nav__entry ">
+                        User Namespaces
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/how-it-works/netns/" class="gdoc-nav__entry ">
+                        Network Namespaces
+                    </a>
+                </span>
+            
+
+            
+            
+                
+    
+
+    <ul class="gdoc-nav__list">
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/how-it-works/netns/outgoing/" class="gdoc-nav__entry ">
+                        Outgoing connections
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/how-it-works/netns/incoming/" class="gdoc-nav__entry ">
+                        Incoming connections
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+    </ul>
+
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/how-it-works/overlayfs/" class="gdoc-nav__entry ">
+                        OverlayFS
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/how-it-works/cgroups/" class="gdoc-nav__entry ">
+                        Cgroups
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+    </ul>
+
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/caveats/" class="gdoc-nav__entry ">
+                        Caveats and Future work
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/glossary/" class="gdoc-nav__entry ">
+                        Glossary
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+            
+            
+            <li>
+            
+                <span class="flex">
+                    <a href="/about-us/" class="gdoc-nav__entry ">
+                        About us
+                    </a>
+                </span>
+            
+
+            
+            
+            </li>
+            
+            
+        
+    </ul>
+
+
+
+
+
+        
+    </section>
+
+    <section class="gdoc-nav--more">
+        
+    </section>
+</nav>
+
+            </aside>
+
+            <div class="gdoc-page">
+                
+    
+
+
+    
+
+
+
+
+
+
+<div class="gdoc-page__header flex flex-wrap justify-between" itemscope itemtype="http://data-vocabulary.org/Breadcrumb">
+    <span>
+        
+            <span class="breadcrumb">
+                <svg class="icon path"><use xlink:href="#path"></use></svg>
+                
+                
+    
+    
+        Rootless Containers
+    
+
+            </span>
+        
+    </span>
+    <span>
+        
+            <svg class="icon code"><use xlink:href="#code"></use></svg>
+            <a href="https://github.com/rootless-containers/rootlesscontaine.rs/edit/master/site/content/_index.md">
+                Edit this page
+            </a>
+        
+    </span>
+</div>
+
+    <article class="gdoc-markdown">
+        <h1>Rootless Containers</h1>
+        
+
+
+
+    
+
 
 <p>Rootless containers refers to the ability for an unprivileged user to create,
 run and otherwise manage containers. This term also includes the variety of
-tooling around containers that can also be run as an unprivileged user. The
-goal of this website is to catalogue all of the open questions and unresolved
-issues that need to be solved to bring us closer to rootless containers &ldquo;for
-all&rdquo;.</p>
-
+tooling around containers that can also be run as an unprivileged user.</p>
 <p>&ldquo;Unprivileged user&rdquo; in this context refers to a user who does not have any
 administrative rights, and is &ldquo;not in the good graces of the administrator&rdquo; (in
 other words, they do not have the ability to ask for more privileges to be
 granted to them, or for software packages to be installed).</p>
-
-<p><iframe src="https://www.slideshare.net/slideshow/embed_code/key/nJyXOTcSJaz0cL" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <a href="https://www.slideshare.net/AkihiroSuda/rootless-containers" title="Rootless Containers" target="_blank">Our talk at DevConf.cz 2019</a></div></p>
-
-<hr />
-
-<h1 id="outdated-contents">⚠️ OUTDATED CONTENTS ⚠️</h1>
-
-<p>The following contents are outdated and planned to be updated.</p>
-
-<p>For a while, please refer to the slide deck above.</p>
-
-<h3 id="objectives">Objectives</h3>
-
-<p>The objectives of this project are to allow an unprivileged user to:</p>
-
+<p>Pros:</p>
 <ul>
-<li>(<strong><code>O0</code></strong>) Create, run, and manage containers on their local machine.</li>
-<li>(<strong><code>O1</code></strong>) Create, modify, distribute, and extract container images on their
-local machine so they may run said container images through (<strong><code>O0</code></strong>).</li>
-<li>(<strong><code>O2</code></strong>) Create, manage, and use a container orchestrator on either their
-local machine (effective a single-node cluster) or on a set of machines they
-would ordinarily be able to communicate with and run unprivileged programs
-on.
-<!-- If you're reading this and want to add to the above list, please open a PR! --></li>
+<li>Can mitigate potential container-breakout vulnerabilities (Not a panacea, of course)</li>
+<li>Friendly to shared machines, especially in HPC environments</li>
 </ul>
-
-<p>While security is not a primary objective of this project (the goal is user
-enablement), the intention is that any kernel-level improvements required to
-facilitate this project will involve collaboration with the <a href="https://containerhardening.org/">Linux Container
-Hardening Project</a>. We hope that the end result is that rootless
-containers will be secure as well as useful, thus allowing enterprises to
-support this usage of containers.</p>
-
-<h2 id="status">Status</h2>
-
-<p>This is a living document, as is maintained by humans. If you wish to add more
-entries to this list, or have an update on a particular section, please <a href="https://github.com/cyphar/rootlesscontaine.rs">open a
-pull request</a>.</p>
-
-<h3 id="o0-runtime">(<code>O0</code>) Runtime</h3>
-
+<p>Cons:</p>
 <ul>
-<li><input type="checkbox" disabled checked> Support rootless containers in a
-standardised container runtime.</li>
-<li><input type="checkbox" disabled checked> Support emulating system calls
-that are not allowed in regular rootless containers.
-(e.g. <code>setgroups(2)</code>, <code>seteuid(2)</code>, <code>chown(2)</code>&hellip;)
-i.e. get <code>apt</code> and <code>yum</code> to work.</li>
-<li><input type="checkbox" disabled> Support checkpointing and restoring
-containers in a standard container runtime. This is separate from the
-&ldquo;standardised container runtime&rdquo; requirement because it is an auxilliary
-feature, and is a more generic problem.</li>
-<li><input type="checkbox" disabled> Support rootless containers in an
-orchestration engine&rsquo;s container runtime. &ldquo;Container runtime&rdquo; in this context
-contains more features and tasks than the technically precise definition
-would include.</li>
-<li><input type="checkbox" disabled> Write some documentation for users about how
-they can use rootless containers. It would be really nice if we had some
-allegory for Jessie&rsquo;s awesome <a href="https://github.com/jessfraz/dockerfiles"><code>dockerfiles</code></a> repo but
-using rootless containers (she <a href="https://blog.jessfraz.com/post/ultimate-linux-on-the-desktop/">actually uses them as well</a>
-but some more descriptive documentation would really help).</li>
+<li>Complexity</li>
 </ul>
-
-<p>The de-facto implementation of the Open Container Initiative&rsquo;s runtime
-specification, <a href="https://github.com/opencontainers/runc"><code>runc</code></a>, supports rootless containers <a href="https://github.com/opencontainers/runc/pull/774">out of the
-box</a>. The main restrictions are the following:</p>
-
+<p>See also <a href="/caveats">Caveats and Future work</a>.</p>
+<div class="gdoc-page__anchorwrap"><h2 id="what-are-rootless-containers-and-what-are-not">What are Rootless Containers and what are not?<a data-clipboard-text="https://rootlesscontaine.rs/#what-are-rootless-containers-and-what-are-not" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor What are Rootless Containers and what are not?" href="#what-are-rootless-containers-and-what-are-not"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h2></div>
+<p>When we say Rootless Containers, it means running the entire container runtime
+as well as the containers without the root privileges.</p>
+<p>Even when the containers are running as non-root users, when the runtime is still
+running as the root, we don&rsquo;t call them Rootless Containers.</p>
+<p>While we allow using SETUID (and/or SETCAP) binaries for some of essential configurations
+such as <a href="./how-it-works/userns"><code>newuidmap</code></a>, when the entire runtime is running with
+SETUID, we don&rsquo;t call it Rootless Containers.</p>
+<div class="gdoc-page__anchorwrap"><h3 id="examples-of-rootless-containers">Examples of Rootless Containers<a data-clipboard-text="https://rootlesscontaine.rs/#examples-of-rootless-containers" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Examples of Rootless Containers" href="#examples-of-rootless-containers"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
 <ul>
-<li><p><code>cgroups</code> are not supported in the general case, because on the kernel side,
-unprivileged subtree management has not been implemented. There is a new
-<code>nsdelegate</code> mount option for the <strong>host</strong> cgroup mount (which allows for
-sub-tree delegation of cgroupv2 when you create a cgroup namespace), but
-since <code>runc</code> supports neither cgroupv2 nor cgroup namespaces this feature is
-not useful to us at the moment. However, <a href="https://github.com/opencontainers/runc/pull/1540">recently</a> <code>runc</code> can
-opportunistically use cgroups if the system was configured to allow users to
-use them (see <a href="https://github.com/lxc/lxcfs"><code>lxcfs</code>&rsquo;s PAM module</a> for an example of how such a
-system can be configured).</p></li>
-
-<li><p><a href="https://criu.org/Main_Page"><code>criu</code></a> supports unprivileged dumping (<code>checkpoint</code>) but <code>restore</code> is
-not supported and the <code>checkpoint</code>ing aspects have not been well tested in
-the context of rootless containers.</p></li>
-
-<li><p>Network namespaces aren&rsquo;t used in most cases because currently unprivileged
-network namespaces are not very useful (in the standard usage of containers)
-because a new network namespace doesn&rsquo;t have any network interfaces (other
-than <code>lo</code>). The standard way of linking network namespaces (<code>veth</code> bridges)
-requires privileges in the host, which is not available in rootless
-containers. Some ideas for solving this are to implement unprivileged <code>veth</code>
-bridges in the kernel, or to implement some sort of unprivileged userspace
-<code>veth</code> bridge implementation with <a href="https://github.com/AkihiroSuda/runrootless/tree/f1c2e886d07b280ae1558d04cfe074aa6889a9a4/misc/vde">TAP</a>. The jury
-is out on this one at the moment, so we just use the host&rsquo;s network namespace
-and call it a day.</p></li>
-
-<li><p>Some system calls such as <code>setgroups(2)</code>, <code>seteuid(2)</code>, and <code>chown(2)</code> are
-<a href="https://www.cyphar.com/blog/post/20160627-rootless-containers-with-runc">known not to work</a> in rootless containers, unless multiple
-UID/GID mappings are configured with SUID utility binaries (<code>newuidmap(1)</code>,
-<code>newgidmap(1)</code>). Programs such as <code>apt</code> and <code>yum</code> are known to require such
-system calls to work.</p></li>
+<li><a href="./getting-started/docker">Docker rootless-mode</a></li>
+<li><a href="./getting-started/podman">Podman rootless-mode</a></li>
+<li><a href="./getting-started/buildkit">BuildKit rootless-mode</a></li>
+<li><a href="./getting-started/lxc">LXC unprivileged-mode</a></li>
+<li><a href="./getting-started/singularity">Singularity fakeroot-mode</a></li>
 </ul>
-
-<p>While <code>setgroups(2)</code> and <code>seteuid(2)</code> are only &ldquo;temporary&rdquo; for the process
-  which executes them, syscalls like <code>chown(2)</code> and <code>mknod(2)</code> actually
-  modify persistent storage and thus rootless container runtimes may wish
-  to persist this data in a interoperable fashion. For this purpose we define
-  <a href="https://github.com/rootless-containers/rootlesscontaine.rs/blob/f7b0f5486bb0e0be75771ce50c54471296f040eb/docs/proto/rootlesscontainers.proto">the <code>user.rootlesscontainers</code> <code>xattr</code> attribute</a>.
-  This is also useful for emulating &ldquo;real root&rdquo; with tools like <a href="https://proot-me.github.io">PRoot</a>
-  or <a href="https://github.com/cyphar/remainroot">remainroot</a>. <a href="https://github.com/rootless-containers/runrootless">runROOTLESS</a> provides a forked
-  version of PRoot that implements the <code>user.rootlesscontainers</code> <code>xattr</code>
-  attribute.</p>
-
-<h3 id="o1-images">(<code>O1</code>) Images</h3>
-
+<p>Click the links for tutorials.</p>
+<div class="gdoc-page__anchorwrap"><h3 id="non-examples-of-rootless-containers"><em>Non</em>-examples of Rootless Containers<a data-clipboard-text="https://rootlesscontaine.rs/#non-examples-of-rootless-containers" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor <em>Non</em>-examples of Rootless Containers" href="#non-examples-of-rootless-containers"><svg class="icon link"><use xlink:href="#link"></use></svg></a></h3></div>
 <ul>
-<li><input type="checkbox" disabled checked> Add support to a tool for creating
-and modifying standardised container images as an unprivileged user.</li>
-<li><input type="checkbox" disabled checked> Add support to a tool for extracting
-and manipulating a root filesystem extracted from a standardised container
-image as an unprivileged user.</li>
-<li><input type="checkbox" disabled checked> Add support to a tool for
-distributing standardised container images as an unprivileged user. Note that
-currently the Open Container Initiative <strong>does not</strong> define a distribution
-format, so &ldquo;distribution&rdquo; refers to effectively doing <code>rsync</code> or something
-similar. Once distribution is standardised, this requirement will be
-extended.</li>
-<li><input type="checkbox" disabled checked> Add support to a tool for building
-standardised container images as an unprivileged user.</li>
-<li><input type="checkbox" disabled> Add support to a storagedriver
-implementation to operate as an unprivileged user. This is separate from
-&ldquo;extract and manipulate&rdquo; because the naive implementation (just dump
-everything to a directory) works in principle but is not as efficient as
-using filesystem features to reduce the footprint of extracted images.</li>
+<li>Allowing a non-root user to access to <code>/var/run/docker.sock</code>, by adding the user to <code>docker</code> group (<code>sudo usermod -aG docker somebody</code>)</li>
+<li><code>docker run --user somebody</code></li>
+<li>Docker userns-remap mode (<code>dockerd --userns-remap</code>)</li>
+<li>Podman userns-remap mode (<code>podman run --uidmap</code>)</li>
+<li>Kaniko</li>
+<li>Makisu</li>
+<li>LXD unprivileged-mode</li>
+<li>Singularity SETUID-mode</li>
 </ul>
+<!--
+TODO: do we consider UML to be an implementation of Rootless Containers or not?
+At least it is very different from UserNS-based Rootless Containers...
+-->
 
-<p>These requirements are implemented by several different tools, that each solve
-a piece of the puzzle. These tools can then be combined to create a
-&ldquo;full-fledged&rdquo; implementation of an image store or handler.</p>
 
-<p>Distribution is the simplest problem to solve in this respect, and is
-accomplished by <a href="https://github.com/projectatomic/skopeo"><code>skopeo</code></a>. In principle an Open Container Initiative
-image can just be copied with <code>rsync</code>, but <code>skopeo</code> also has several features
-related to conversion between different image formats that makes it incredibly
-useful for a variety of other tasks. <code>skopeo</code> does not require privileges for
-any of this core functionality (and in fact, is normally used as an
-unprivileged user).</p>
+    </article>
 
-<p>Extraction, modification, and creation are implemented by <a href="https://umo.ci/"><code>umoci</code></a>. The
-main issue with these operations is the limitations of the filesystem as an
-unprivileged user, since there are a wide variety of operations that are not
-permitted (for security reasons). As a result, <code>umoci</code>&rsquo;s rootless support comes
-with some caveats:</p>
-
-<ul>
-<li><p>While <code>umoci</code> will recreate the precise (or as close as possible) root
-filesystem state of the container image as a privileged user, as an
-unprivileged user certain hacks are required. Examples include creating dummy
-files in place of device nodes that an unprivileged user cannot create, and
-forcing everything to be owned by the current unprivileged user. As a result,
-the results of the image extraction may be counter-intuitive, but a lot of
-work has gone into reducing the weirdness of these hacks. In addition, <code>umoci
-repack</code> is implemented in such a way that it should not (in normal usage)
-result in an image that has <code>umoci</code>&rsquo;s hacks baked into it (if you run an
-image modified by an unprivileged user as a privileged user it should work
-normally). However, <code>umoci</code> supports the usage of the previously mentioned
-<a href="https://github.com/rootless-containers/rootlesscontaine.rs/blob/f7b0f5486bb0e0be75771ce50c54471296f040eb/docs/proto/rootlesscontainers.proto"><code>user.rootlesscontainers</code> <code>xattr</code> attribute</a>,
-which means that programs that accept <code>user.rootlesscontainers</code> attributes
-will be able to interoperate correctly.</p></li>
-
-<li><p>Because of how discretionary access control works, <code>umoci</code> may have to modify
-the root filesystem of an extracted image when doing &ldquo;read-only&rdquo; operations
-on the extracted image. This means that root filesystems on <code>read-only</code> media
-(while <code>umoci</code> is operating on them) may run into issues.</p></li>
-</ul>
-
-<p>Building of images is implemented by <a href="https://github.com/cyphar/orca-build"><code>orca-build</code></a>, which is a
-proof-of-concept wrapper around <code>runc</code>, <code>umoci</code>, and <code>skopeo</code>. There are
-several other container builder projects which may implement this feature in
-the future, but right now <code>orca-build</code> is fast enough and is quite minimal. It
-also has the additional feature of being compatible with the <code>Dockerfile</code>
-format for specifying build steps.</p>
-
-<h3 id="o2-orchestration">(<code>O2</code>) Orchestration</h3>
-
-<p>Orchestration is currently the biggest unknown. It&rsquo;s not quite clear what is
-complete list of tasks necessary in order to make a container orchestrator run
-with the majority of its functionality working as an unprivileged user.</p>
-
-<ul>
-<li><input type="checkbox" disabled> Implement a way for a container networking
-interface plugin to run as an unprivileged user. This may involve just
-creating alternative plugins and swapping out the privileged versions.
-<!-- TODO: Extend these. --></li>
-</ul>
-
-<p>These tasks do not have much significant progress. However, Cloud Foundry have
-implemented <a href="https://github.com/cloudfoundry/garden-runc-release/blob/43a4aaf771a18173f1b57a8aec749d16433ad2a7/docs/rootless-containers.md">experimental rootless container support</a>. The
-downside to their implementation is that it still requires privileged setup
-steps, and a privileged networking binary during the container lifecycle
-(thus not making it truly rootless, but it&rsquo;s a great first step).</p>
-
-<h2 id="prior-art">Prior Art</h2>
-
-<!-- If we've missed your project, feel free to open a PR! -->
-
-<p>There has been some work in this space before, but (to our knowledge) nothing
-this ambitious. The following are a list of projects that have some kind of
-rootless container support.</p>
-
-<ul>
-<li><p><a href="https://github.com/projectatomic/bubblewrap"><code>bubblewrap</code></a> (formerly <code>xdg-app</code>) implements parts of a
-container runtime as an unprivileged user, but to our knowledge it doesn&rsquo;t
-implement enough of the Open Container Initiative standard (even with
-<a href="https://github.com/projectatomic/bwrap-oci"><code>bwrap-oci</code></a>) to be a full container runtime.</p></li>
-
-<li><p><a href="https://linuxcontainers.org/lxc/"><code>lxc</code></a> has implemented quite a substantial portion of rootless
-containers, but their implementation requires privileged helper binaries to
-set up <code>cgroups</code> and network interfaces. This is a reasonable compromise for
-a container runtime (and <code>runc</code>&rsquo;s solution was to just ignore those
-usecases), and <code>lxc</code> does have knobs to disable the use of those binaries,
-but it still means that it is still more of a hassle to use <code>lxc</code> in a way
-that would be required by this project.</p></li>
-
-<li><p><a href="https://github.com/jessfraz/binctr"><code>binctr</code></a> was a proof-of-concept written by <a href="https://blog.jessfraz.com/">Jessie
-Frazelle</a> and was the inspiration for the upstream rootless
-container work in runc. It has the interesting additional feature of creating
-a single static binary that contains both the container runtime and the root
-filesystem of the container.</p></li>
-
-<li><p><a href="https://www.sylabs.io/"><code>singularity</code></a> was developed in parallel to the <code>runc</code>
-implementation of rootless containers. It is a runtime that was developed for
-HPC requirements, and so has quite a few odd design desisions based on those
-requirements. However, one point of note is that in its default configuration
-it has several <code>setuid</code> binaries that it uses for core operations (such as
-mounting the loopback device used as the rootfs), which make it impractical
-for the use-cases rootless containers were meant to solve. It appears that
-<code>singularity</code> does support user namespaces, but it&rsquo;s not clear whether a
-fully unprivileged setup is commonly used or has enough features to contend
-with <code>runc</code>&rsquo;s rootless containers.</p></li>
-</ul>
-
-<h2 id="faq">FAQ</h2>
-
-<!-- If there is a question that hasn't been answered here, please open a PR! -->
-
-<h3 id="who-are-we">Who are we?</h3>
-
-<p>At the moment, a party of one. But if this sounds cool to you, feel free to
-join me! I&rsquo;m on <a href="https://mastodon.social/@cyphar">Mastodon</a>, and can be reached
-at (<a href="mailto:cyphar@cyphar.com">cyphar@cyphar.com</a>).</p>
-
-    </section>
-  </article>
-</main>
+                
 
 
 
 
+
+
+
+
+    
+    
+
+    
+
+
+
+
+
+<div class="gdoc-page__footer flex flex-wrap justify-between">
+    
+    
 </div>
 
-<footer>
-  <div class="container">
-	  <span class="copyright">Copyright &copy;
-2017
-Aleksa Sarai - <a href="https://rootlesscontaine.rs/">https://rootlesscontaine.rs/</a> is free software.
-The text is licensed under the <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a> license
-and any source code is licensed under <a rel="license" href="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>.</span>
-<a href="https://github.com/cyphar/rootlesscontaine.rs">Source Code.</a>
-  </div>
+            </div>
+        </main>
+
+        <footer class="gdoc-footer">
+    <div class="container flex flex-wrap">
+        <span class="gdoc-footer__item">
+            Built with <a href="https://gohugo.io/" class="gdoc-footer__link">Hugo</a> and
+            <svg class="icon heart"><use xlink:href="#heart"></use></svg>
+        </span>
+        
+        <span class="gdoc-footer__item">
+            <a href="/legal" class="gdoc-footer__link">Legal Notice</a>
+        </span>
+        
+        
+    </div>
 </footer>
+
+    </div>
+
+    
+
+
+
+
+<script defer src="/js/en.search.min.js"></script>
+
+
+
+<script defer src="/js/clipboard.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+        var clipboard = new ClipboardJS('.clip');
+    });
+</script>
+
 
 </body>
 </html>
-

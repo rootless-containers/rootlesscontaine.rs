@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network Namespaces on Rootless Containers</title>
+    <link>https://rootlesscontaine.rs/how-it-works/netns/</link>
+    <description>Recent content in Network Namespaces on Rootless Containers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://rootlesscontaine.rs/how-it-works/netns/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Outgoing connections</title>
+      <link>https://rootlesscontaine.rs/how-it-works/netns/outgoing/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/how-it-works/netns/outgoing/</guid>
+      <description>Unsharing network namespaces isn&amp;rsquo;t only for assigning IP addresses; it is also essential to protect abstract UNIX sockets on the host from containerized processes.
+However, unsharing network namespaces for Rootless Containers isn&amp;rsquo;t straightforward, because vEth pairs cannot be created across UserNS boundaries without the privilege.
+LXC uses a SETUID binary called lxc-user-nic for setting up vEth pairs.
+Other implementations including Docker/Moby and Podman typically use TAP devices instead of vEth pairs, and run a usermode network stack called slirp, which translates Ethernet packets to unprivileged socket system calls.</description>
+    </item>
+    
+    <item>
+      <title>Incoming connections</title>
+      <link>https://rootlesscontaine.rs/how-it-works/netns/incoming/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/how-it-works/netns/incoming/</guid>
+      <description>Connections incoming from the Internet cannot directly reach network namespaces.
+Two forwarder implementations are used for transferring connections to Rootless Containers&#39; network namespaces.
+RootlessKit The RootlessKit implementation is used by both Docker/Moby and Podman.
+slirp4netns slirp4netns also has its own port forwarder.
+The slirp4netns implementation is slower than RootlessKit, however, the slirp4netns implementation can keep source IP addresses, while the RootlessKit implementation treats all connections as if they were from 127.</description>
+    </item>
+    
+  </channel>
+</rss>

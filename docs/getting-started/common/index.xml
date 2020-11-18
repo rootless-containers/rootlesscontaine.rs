@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Common steps (Read first!) on Rootless Containers</title>
+    <link>https://rootlesscontaine.rs/getting-started/common/</link>
+    <description>Recent content in Common steps (Read first!) on Rootless Containers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://rootlesscontaine.rs/getting-started/common/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Login</title>
+      <link>https://rootlesscontaine.rs/getting-started/common/login/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/common/login/</guid>
+      <description>Most Rootless Containers implementations need the $XDG_RUNTIME_DIR environmental variable to be set. When the environment variable is not set, features related to systemd and cgroups are unlikely to work properly.
+The value is typically set to /run/user/$UID automatically by systemd or elogind on logging into the host.
+Run the following command to confirm:
+$ echo $XDG_RUNTIME_DIR /run/user/1000 The $XDG_RUNTIME_DIR environmental variable is set when:
+ Logged in as a non-root user via the graphic console .</description>
+    </item>
+    
+    <item>
+      <title>Configure sysctl</title>
+      <link>https://rootlesscontaine.rs/getting-started/common/sysctl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/common/sysctl/</guid>
+      <description>Debian, Arch, and RHEL/CentOS 7 are known to require reconfiguration of sysctl to enable User Namespaces.
+Debian GNU/Linux  Note
+These steps are not needed for Ubuntu.
+ Create /etc/sysctl.d/99-rootless.conf with the following content:
+kernel.unprivileged_userns_clone=1 And then run the following command to reload the new sysctl configuration:
+$ sudo sysctl --system Optional: To enable overlay filesystem, create /etc/modprobe.d/overlay.conf with the following content, and then reboot.
+options overlay permit_mounts_in_userns=1   Arch Linux  Create /etc/sysctl.</description>
+    </item>
+    
+    <item>
+      <title>/etc/subuid and /etc/subgid</title>
+      <link>https://rootlesscontaine.rs/getting-started/common/subuid/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/common/subuid/</guid>
+      <description>Rootless Containers implementations mostly expect /etc/subuid to contain at least 65,536 subuids.
+In the following example, 65,536 subuids (100000-165535) are allocated for a user named &amp;ldquo;user1&amp;rdquo;.
+$ cat /etc/subuid user1:100000:65536 The same applies to subgids defined in /etc/subgid. See also How it works/User Namespaces.
+These subuids and subgids are typically automatically configured by the system.
+If subuids and subgids are not configured, you need to edit /etc/subuid and /etc/subgid directly with a text editor:</description>
+    </item>
+    
+    <item>
+      <title>[Optional] cgroup v2</title>
+      <link>https://rootlesscontaine.rs/getting-started/common/cgroup2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/getting-started/common/cgroup2/</guid>
+      <description>Note
+Enabling cgroup v2 is optional.
+ Enabling cgroup v2 is often needed for running Rootless Containers with limiting the consumption of the CPU, memory, I/O, and PIDs resources, e.g. docker run --memory 32m.
+Note that cgroup is not needed for just limiting resources with traditional ulimit and cpulimit, though they work in process-granularity rather than in container-granularity. See here for the further information.
+Checking whether cgroup v2 is already enabled If /sys/fs/cgroup/cgroup.</description>
+    </item>
+    
+  </channel>
+</rss>

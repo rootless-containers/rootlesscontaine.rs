@@ -1,20 +1,153 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://rootlesscontaine.rs/</loc>
-    <lastmod>2017-04-07T21:07:40+10:00</lastmod>
+    <loc>https://rootlesscontaine.rs/getting-started/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/legal/</loc>
+    <lastmod>2020-10-05T15:36:39+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/common/login/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/how-it-works/userns/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/common/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/common/sysctl/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/docker/</loc>
+    <lastmod>2020-10-22T15:43:20+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/how-it-works/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/how-it-works/netns/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/how-it-works/netns/outgoing/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/podman/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/buildkit/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/umoci/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/common/subuid/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/containerd/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/how-it-works/netns/incoming/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/how-it-works/overlayfs/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/common/cgroup2/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/caveats/</loc>
+    <lastmod>2020-10-22T15:43:20+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/runc/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/how-it-works/cgroups/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/lxc/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/singularity/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/udocker/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/glossary/</loc>
+    <lastmod>2020-10-22T15:43:20+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/about-us/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/getting-started/kubernetes/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://rootlesscontaine.rs/categories/</loc>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://rootlesscontaine.rs/</loc>
+    <lastmod>2020-10-05T16:24:34+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://rootlesscontaine.rs/tags/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>

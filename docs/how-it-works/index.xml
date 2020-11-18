@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>How it works on Rootless Containers</title>
+    <link>https://rootlesscontaine.rs/how-it-works/</link>
+    <description>Recent content in How it works on Rootless Containers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://rootlesscontaine.rs/how-it-works/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>User Namespaces</title>
+      <link>https://rootlesscontaine.rs/how-it-works/userns/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/how-it-works/userns/</guid>
+      <description>Rootless containers uses user_namespaces(7)(UserNS) for emulating fake privileges that are enough to create containers.
+e.g. map UID 1000 to pseudo-root UID 0 in the UserNS:
+$ whoami user1 $ id -u 1000 $ unshare --user --map-root-user # cat /proc/self/uid_map 0 1000 1 # cat /proc/self/gid_map 0 1000 1 # id -u 0 The pseudo-root user gains capabilities such as CAP_SYS_ADMIN and CAP_NET_ADMIN inside UserNS to perform fake-privileged operations such as creating mount namespaces, network namespaces, and creating TAP devices.</description>
+    </item>
+    
+    <item>
+      <title>OverlayFS</title>
+      <link>https://rootlesscontaine.rs/how-it-works/overlayfs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/how-it-works/overlayfs/</guid>
+      <description>The upstream kernel still doesn&amp;rsquo;t support mounting OverlayFS inside UserNS, though Ubuntu and Debian support it by patching the kernel.
+On other distros, Rootless Containers typically use fuse-overlayfs instead of the real OverlayFS.</description>
+    </item>
+    
+    <item>
+      <title>Cgroups</title>
+      <link>https://rootlesscontaine.rs/how-it-works/cgroups/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://rootlesscontaine.rs/how-it-works/cgroups/</guid>
+      <description>v1 Delegating cgroup v1 controllers to non-root users is not considered to be safe. So, most Rootless Containers implementations do not support using cgroups on cgroup v1 hosts.
+However, LXC supports delegating cgroup v1 to non-root users by using a PAM module called pam_cgfs.
+v2 Unlike cgroup v1, cgroup v2 officially supports delegation. Most Rootless Containers implementations rely on systemd for delegating v2 controllers to non-root users. See Getting Started/Common/Cgroup v2 for the actual configuration.</description>
+    </item>
+    
+  </channel>
+</rss>

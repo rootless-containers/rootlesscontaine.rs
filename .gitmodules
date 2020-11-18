@@ -1,3 +1,0 @@
-[submodule "site/themes/base16"]
-	path = site/themes/base16
-	url = https://github.com/htdvisser/hugo-base16-theme.git

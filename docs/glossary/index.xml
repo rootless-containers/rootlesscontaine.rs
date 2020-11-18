@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Glossary on Rootless Containers</title>
+    <link>https://rootlesscontaine.rs/glossary/</link>
+    <description>Recent content in Glossary on Rootless Containers</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://rootlesscontaine.rs/glossary/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

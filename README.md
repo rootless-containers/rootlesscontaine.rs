@@ -35,14 +35,26 @@ If you want to actually compile the site for publishing, just run `hugo
 
 [hugo]: https://github.com/spf13/hugo
 
+### Theme ###
+
+This site uses [Geekdoc v0.4.0](https://github.com/thegeeklab/hugo-geekdoc/tree/v0.4.0) as the theme.
+
+How to update:
+
+```console
+curl -L https://github.com/thegeeklab/hugo-geekdoc/releases/latest/download/hugo-geekdoc.tar.gz | tar -xz -C site/themes/hugo-geekdoc/ --strip-components=1
+```
+
+See also https://geekdocs.de/usage/getting-started/
+
 ### License ###
 
-The contents under the [`proto`][proto] directory are licensed under the terms
-of the [Apache License 2.0][apache2].
-
-The other contents of the website are licensed under the terms of the [CC-BY-SA
+The contents of the website are licensed under the terms of the [CC-BY-SA
 4.0][cc] license. They are copyrighted by their respective authors.
 
-[proto]: ./proto
+The [`hugo-geekdoc` template](https://github.com/thegeeklab/hugo-geekdoc)
+is licensed under the terms of the [MIT](mit-hugo-geekdoc) license.
+
 [apache2]: http://www.apache.org/licenses/LICENSE-2.0
 [cc]: https://creativecommons.org/licenses/by-sa/4.0
+[mit-hugo-geekdoc]: https://github.com/thegeeklab/hugo-geekdoc/blob/master/LICENSE
