@@ -77,7 +77,7 @@ $ sudo sysctl --system
 Most distributions do not allow non-root users to listen on TCP & UDP ports below 1024.
 e.g. listening on 80/tcp would fail with "permission denied", while listening on 8080/tcp would success.
 
-To allow running `ping` without root, create `/etc/sysctl.d/99-rootless.conf` with the following content:
+To allow listening on any port without root, create `/etc/sysctl.d/99-rootless.conf` with the following content:
 ```
 net.ipv4.ip_unprivileged_port_start=0
 ```
