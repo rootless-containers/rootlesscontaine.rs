@@ -21,7 +21,7 @@ See https://github.com/rootless-containers/usernetes
 ```console
 $ tar xjvf usernetes-x86_64.tbz
 $ cd usernetes
-$ ./install.sh --cri=containerd --cgroup-manager=systemd
+$ ./install.sh --cri=containerd
 $ export KUBECONFIG="$HOME/.config/usernetes/master/admin-localhost.kubeconfig"
 $ kubectl apply -f manifests/*.yaml
 ```
