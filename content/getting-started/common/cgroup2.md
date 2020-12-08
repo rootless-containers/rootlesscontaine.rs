@@ -25,9 +25,9 @@ As of October 2020, Fedora (since 31) is the only well-known distribution that u
 
 ## Enabling cgroup v2
 
-Enabling cgroup v2 for containers require kernel 4.15 or later. Kernel 5.2 or later is recommended.
+Enabling cgroup v2 for containers requires kernel 4.15 or later. Kernel 5.2 or later is recommended.
 
-And yet, delegating cgroup v2 controllers to non-root users requires the recent version of systemd. systemd 244 or later is recommended.
+And yet, delegating cgroup v2 controllers to non-root users requires a recent version of systemd. systemd 244 or later is recommended.
 
 To boot the host with cgroup v2, add the following string to the `GRUB_CMDLINE_LINUX` line in `/etc/default/grub` and then run `sudo update-grub`.
 ```
@@ -53,4 +53,4 @@ EOF
 $ sudo systemctl daemon-reload
 ```
 
-Delegating `cpuset` is recommended as well as `cpu`, but delegating `cpuset` requires systemd 244 or later.
+Delegating `cpuset` is recommended as well as `cpu`. Delegating `cpuset` requires systemd 244 or later.
