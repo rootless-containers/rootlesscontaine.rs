@@ -61,7 +61,7 @@ $ sudo sysctl --system
 
 
 ## [Optional] allowing ping
-Most distributions do not allow non-root users cannot send ICMP Echo Request packets (aka `ping`) by default.
+Most distributions do not allow non-root users to send ICMP Echo Request packets (aka `ping`) by default.
 
 To allow running `ping` without root, create `/etc/sysctl.d/99-rootless.conf` with the following content:
 ```
