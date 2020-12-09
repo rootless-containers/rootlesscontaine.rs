@@ -10,7 +10,7 @@ Docker 19.03 provides almost full features for Rootless mode, including support
 for port fowarding (`docker run -p`) and multi-container networking (`docker network create`),
 but it doesn't support limiting resources with cgroup.
 
-Docker 20.10 (beta as of October 2020) added support for limiting resources using cgroup v2.
+Docker 20.10 added support for limiting resources using cgroup v2.
 
 ## Installation
 
@@ -26,12 +26,12 @@ Especially, make sure [`$XDG_RUNTIME_DIR`](../common/login/) to be set properly.
 The official installation script can be executed by a non-root user without `sudo`.
 
 {{< tabs >}}
-{{< tab "Stable (v19.03)" >}}
+{{< tab "Stable" >}}
 ```console
 $ curl -fsSL https://get.docker.com/rootless | sh
 ```
 {{< /tab >}}
-{{< tab "Test (v20.10)" >}}
+{{< tab "Test" >}}
 ```console
 $ curl -fsSL https://get.docker.com/rootless | CHANNEL=test sh
 ```
