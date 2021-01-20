@@ -30,6 +30,8 @@ A [FUSE](#fuse) implementation of OverlayFS.
 
 Web site: https://github.com/containers/fuse-overlayfs
 
+FUSE-OverlayFS is mostly used for allowing rootless OverlayFS on old kernels (< 5.11).
+
 See [How it works/OverlayFS](../how-it-works/overlayfs/).
 
 ## N
