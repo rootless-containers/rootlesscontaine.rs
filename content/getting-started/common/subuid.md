@@ -22,6 +22,28 @@ If subuids and subgids are not configured, you need to edit `/etc/subuid` and `/
 $ sudo vi /etc/subuid
 ```
 
+Pre-generating all possible values for /etc/subuid and /etc/subgid, based on uid and gid, rather than the user 
+and group names, is also possible. This can simplify shared management of shared computing environments
+using LDAP/AD, while there is no standardized way to store or retrieve subuid and subgid values
+from those directories.
+
+An example python program to generate the files:
+
+```python
+f = open("/etc/subuid", "w")
+for uid in range(1000, 65536):
+    f.write("%d:%d:65536\n" %(uid,uid*65536))
+f.close()
+
+f = open("/etc/subgid", "w")
+for uid in range(1000, 65536):
+    f.write("%d:%d:65536\n" %(uid,uid*65536))
+f.close()
+```
+
+When doing this, however, it's important to note that duplicate entries will be added to the files
+when adding new local users, through based on user name or group name.
+
 ## newuidmap and newgidmap
 
 `newuidmap` and `newgidmap` needs to be installed on the host.
