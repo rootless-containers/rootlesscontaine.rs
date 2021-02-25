@@ -42,7 +42,7 @@ f.close()
 ```
 
 When doing this, however, it's important to note that duplicate entries will be added to the files
-when adding new local users, through based on user name or group name.
+when adding new local users or groups. Those new entries will be based on user name or group name.
 
 ## newuidmap and newgidmap
 
