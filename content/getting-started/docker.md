@@ -42,10 +42,11 @@ $ curl -fsSL https://get.docker.com/rootless | CHANNEL=nightly sh
 ```
 {{< /tab >}}
 {{< tab "RPMs/DEBs" >}}
-Docker 20.10 provides RPMs and DEBs that can be installed by the root for all the users on the host.
+Docker 20.10 provides `docker-ce-rootless-extras` RPMs and DEBs that can be installed by the root for all the users on the host.
 
 ```console
-$ curl -fsSL https://get.docker.com/ | sudo CHANNEL=test sh
+$ curl -fsSL https://get.docker.com | sudo sh
+$ sudo apt-get install -y docker-ce-rootless-extras
 ```
 
 After installing RPMs/DEBS, run the following command as a non-root user to create the systemd user-instance unit:
@@ -100,7 +101,7 @@ slirp4netns port forwarder is preferred over RootlessKit port forwarder.
 
 To change the port forwarder to slirp4netns, add the following line to the `[Service]` section of `~/.config/systemd/user/docker.service`:
 ```
-Environment=DOCKERD_ROOTLESS_ROOTLESSKIT_PORT_DRIVER=slirp4netns
+Environment="DOCKERD_ROOTLESS_ROOTLESSKIT_PORT_DRIVER=slirp4netns"
 ```
 
 And then restart the daemon:
