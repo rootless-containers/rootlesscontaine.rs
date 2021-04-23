@@ -3,8 +3,8 @@ title: Docker/Moby
 weight: 20
 ---
 
-Rootless Docker/Moby was initially proposed in early 2018 and has been merged to
-the Docker/Moby upstream since Docker 19.03.
+Rootless Docker/Moby was implemented in 2018 following rootless runc, containerd, and BuildKit.
+Rootless Docker has been merged to the Docker/Moby upstream since Docker 19.03.
 
 Docker 19.03 provides almost full features for Rootless mode, including support
 for port fowarding (`docker run -p`) and multi-container networking (`docker network create`),
