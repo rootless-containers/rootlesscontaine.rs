@@ -125,9 +125,7 @@ You need to run `sudo loginctl enable-linger ...`. See [Getting Started/Login](/
 
 Run the following commands to remove all containers and configurations:
 ```console
-$ systemctl --user stop docker
-$ systemctl --user disable docker
-$ rm -rf ~/.config/systemd/user/docker.service*
+$ dockerd-rootless-setuptool.sh uninstall
 $ ~/bin/rootlesskit rm -rf ~/.local/share/docker ~/.config/docker
 ```
 
