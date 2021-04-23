@@ -17,7 +17,7 @@ Create `/etc/sysctl.d/99-rootless.conf` with the following content:
 kernel.unprivileged_userns_clone=1
 ```
 
-And then run the following command to reload the new sysctl configuration:
+Then run the following command to reload the new sysctl configuration:
 ```console
 $ sudo sysctl --system
 ```
