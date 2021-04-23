@@ -30,18 +30,21 @@ The official installation script can be executed by a non-root user without `sud
 ```console
 $ curl -o rootless-install.sh -fsSL https://get.docker.com/rootless
 $ sh rootless-install.sh
+$ export PATH=$HOME/bin:$PATH
 ```
 {{< /tab >}}
 {{< tab "Test" >}}
 ```console
 $ curl -o rootless-install.sh -fsSL https://get.docker.com/rootless
 $ CHANNEL=test sh rootless-install.sh
+$ export PATH=$HOME/bin:$PATH
 ```
 {{< /tab >}}
 {{< tab "Nightly" >}}
 ```console
 $ curl -o rootless-install.sh -fsSL https://get.docker.com/rootless
 $ CHANNEL=nightly rootless-install.sh
+$ export PATH=$HOME/bin:$PATH
 ```
 {{< /tab >}}
 {{< tab "RPMs/DEBs" >}}
@@ -65,11 +68,25 @@ $ dockerd-rootless-setuptool.sh install
 
 ## Usage
 
+For backward compatibility, the `docker` CLI attempts to connect to the rootful daemon by default.
+
+To connect to the rootless daemon, you need to set either the CLI context or an environment variable.
+
+{{< tabs "docker-cli-config" >}}
+{{< tab "CLI context (Modern)" >}}
 ```console
-$ export PATH=$HOME/bin:$PATH
+$ docker context use rootless
+$ docker run hello-world
+```
+{{< /tab >}}
+{{< tab "Env var (Classic)" >}}
+```console
 $ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
 $ docker run hello-world
 ```
+{{< /tab >}}
+{{< /tabs >}}
+
 
 To start/stop the daemon, use `systemctl --user <start|stop> docker` instead of `systemctl <start|stop> docker`.
 The systemd unit file is located as `~/.config/systemd/user/docker.service`.
