@@ -21,13 +21,6 @@ And then run the following command to reload the new sysctl configuration:
 ```console
 $ sudo sysctl --system
 ```
-
-**Optional**: To enable overlay filesystem, create `/etc/modprobe.d/overlay.conf` with the following content,
-and then reboot.
-```
-options overlay permit_mounts_in_userns=1
-```
-
 {{< /tab >}}
 {{< tab "Arch Linux (old)" >}}
 {{< hint info >}}
