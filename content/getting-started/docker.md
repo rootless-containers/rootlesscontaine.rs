@@ -28,24 +28,28 @@ The official installation script can be executed by a non-root user without `sud
 {{< tabs >}}
 {{< tab "Stable" >}}
 ```console
-$ curl -fsSL https://get.docker.com/rootless | sh
+$ curl -o rootless-install.sh -fsSL https://get.docker.com/rootless
+$ sh rootless-install.sh
 ```
 {{< /tab >}}
 {{< tab "Test" >}}
 ```console
-$ curl -fsSL https://get.docker.com/rootless | CHANNEL=test sh
+$ curl -o rootless-install.sh -fsSL https://get.docker.com/rootless
+$ CHANNEL=test sh rootless-install.sh
 ```
 {{< /tab >}}
 {{< tab "Nightly" >}}
 ```console
-$ curl -fsSL https://get.docker.com/rootless | CHANNEL=nightly sh
+$ curl -o rootless-install.sh -fsSL https://get.docker.com/rootless
+$ CHANNEL=nightly rootless-install.sh
 ```
 {{< /tab >}}
 {{< tab "RPMs/DEBs" >}}
 Docker 20.10 provides `docker-ce-rootless-extras` RPMs and DEBs that can be installed by the root for all the users on the host.
 
 ```console
-$ curl -fsSL https://get.docker.com | sudo sh
+$ curl -o install.sh -fsSL https://get.docker.com
+$ sudo sh install.sh
 $ sudo apt-get install -y docker-ce-rootless-extras
 ```
 
