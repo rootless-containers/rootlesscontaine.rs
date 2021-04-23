@@ -29,7 +29,12 @@ options overlay permit_mounts_in_userns=1
 ```
 
 {{< /tab >}}
-{{< tab "Arch Linux" >}}
+{{< tab "Arch Linux (old)" >}}
+{{< hint info >}}
+**Note**
+
+These steps are *no longer* needed for Arch Linux as of April 2021.
+{{< /hint>}}
 Create `/etc/sysctl.d/99-rootless.conf` with the following content:
 ```
 kernel.unprivileged_userns_clone=1
