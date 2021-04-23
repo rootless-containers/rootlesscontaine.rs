@@ -103,8 +103,10 @@ Docker/Moby uses [RootlessKit](/glossary#rootlesskit) as the default port forwar
 However, as explained in [How it works](/how-it-works/netns/incoming/), sometimes
 slirp4netns port forwarder is preferred over RootlessKit port forwarder.
 
-To change the port forwarder to slirp4netns, add the following line to the `[Service]` section of `~/.config/systemd/user/docker.service`:
+To change the port forwarder to slirp4netns, create `~/.config/systemd/user/docker.service.d/override.conf` with the following content:
+
 ```
+[Service]
 Environment="DOCKERD_ROOTLESS_ROOTLESSKIT_PORT_DRIVER=slirp4netns"
 ```
 
@@ -125,7 +127,7 @@ Run the following commands to remove all containers and configurations:
 ```console
 $ systemctl --user stop docker
 $ systemctl --user disable docker
-$ rm -f ~/.config/systemd/user/docker.service
+$ rm -rf ~/.config/systemd/user/docker.service*
 $ ~/bin/rootlesskit rm -rf ~/.local/share/docker ~/.config/docker
 ```
 
