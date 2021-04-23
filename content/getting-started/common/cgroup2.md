@@ -21,7 +21,11 @@ See [here](https://docs.docker.com/engine/security/rootless/#limiting-resources)
 
 If `/sys/fs/cgroup/cgroup.controllers` is present on your system, you are using v2, otherwise you are using v1.
 
-As of October 2020, Fedora (since 31) is the only well-known distribution that uses cgroup v2 by default.
+The following distributions are known to use cgroup v2 by default:
+- Fedora (since 31)
+- Arch Linux (since April 2021)
+
+Debian GNU/Linux 11 (ETA: 2021) and [Ubuntu 21.10](https://bugs.launchpad.net/ubuntu/+source/snapd/+bug/1850667) are also planned to use cgroup v2 by default.
 
 ## Enabling cgroup v2
 
