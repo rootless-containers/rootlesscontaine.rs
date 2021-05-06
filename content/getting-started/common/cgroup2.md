@@ -58,3 +58,6 @@ $ sudo systemctl daemon-reload
 ```
 
 Delegating `cpuset` is recommended as well as `cpu`. Delegating `cpuset` requires systemd 244 or later.
+
+After changing the systemd configuration, you need to re-login or reboot the host.
+Rebooting the host is recommended.
