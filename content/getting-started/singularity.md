@@ -23,4 +23,4 @@ This means that you can't protect the abstract sockets on the host (such as D-Bu
 from being connected from containerized processes, unless you disable Internet connectivity.
 
 ## Singularity fake-root mode
-See https://sylabs.io/guides/3.6/user-guide/fakeroot.html
+See https://singularity.hpcng.org/user-docs/master/fakeroot.html
