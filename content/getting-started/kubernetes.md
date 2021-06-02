@@ -30,8 +30,5 @@ $ kubectl apply -f manifests/*.yaml
 
 [k3s](https://k3s.io) supports Rootless mode using our Usernetes patchset.
 
-```console
-$ k3s server --rootless
-```
+See https://rancher.com/docs/k3s/latest/en/advanced/#running-k3s-with-rootless-mode-experimental
 
-See also https://rancher.com/docs/k3s/latest/en/advanced/#running-k3s-with-rootlesskit-experimental
