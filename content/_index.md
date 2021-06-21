@@ -28,11 +28,12 @@ When we say Rootless Containers, it means running the entire container runtime
 as well as the containers without the root privileges.
 
 Even when the containers are running as non-root users, when the runtime is still
-running as the root, we don't call them Rootless Containers.
+running as root, we don't call them Rootless Containers.
 
-While we allow using SETUID (and/or SETCAP) binaries for some of essential configurations
-such as [`newuidmap`](./how-it-works/userns), when the entire runtime is running with
-SETUID, we don't call it Rootless Containers.
+While we allow using setuid (and/or setcap) binaries for some essential configurations
+such as [`newuidmap`](./how-it-works/userns), when a larger part of the runtime is running with
+setuid, we don't call it Rootless Containers.  We also don't call it Rootless Containers
+when the root user inside a container is mapped to the root user outside the container.
 
 ### Examples of Rootless Containers
 
@@ -40,7 +41,7 @@ SETUID, we don't call it Rootless Containers.
 - [Podman rootless-mode](./getting-started/podman)
 - [BuildKit rootless-mode](./getting-started/buildkit)
 - [LXC unprivileged-mode](./getting-started/lxc)
-- [Singularity fakeroot-mode](./getting-started/singularity)
+- [Singularity userns-mode or fakeroot-mode](./getting-started/singularity)
 
 Click the links for tutorials.
 
@@ -52,7 +53,7 @@ Click the links for tutorials.
 - Kaniko
 - Makisu
 - LXD unprivileged-mode
-- Singularity SETUID-mode
+- Singularity setuid-mode
 
 <!--
 TODO: do we consider UML to be an implementation of Rootless Containers or not?
