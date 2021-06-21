@@ -35,6 +35,6 @@ from being connected from containerized processes, unless you disable Internet c
 This limitation also applies to the second mode.
 
 ## Singularity unprivileged user namespace mode
-See https://sylabs.io/guides/3.7/admin-guide/user_namespace.html#unprivileged-installations
+See https://singularity.hpcng.org/admin-docs/master/user_namespace.html#unprivileged-installations
 ## Singularity fake-root mode
 See https://singularity.hpcng.org/user-docs/master/fakeroot.html
