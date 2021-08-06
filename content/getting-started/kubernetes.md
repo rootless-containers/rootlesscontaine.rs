@@ -9,8 +9,13 @@ weight: 90
 Please read [the common steps](../common) first.
 {{< /hint>}}
 
-We have been proposing our patchset for supporting Rootless mode to the Kubernetes upstream,
-but our proposal has not been merged yet: https://github.com/kubernetes/enhancements/pull/1371
+Running node components of Kubernetes in a user namespace has been supported since Kubernetes v1.22 (alpha).
+
+See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-in-userns
+
+## kind
+
+See https://kind.sigs.k8s.io/docs/user/rootless/
 
 ## Usernetes
 
@@ -28,7 +33,10 @@ $ kubectl apply -f manifests/*.yaml
 
 ## k3s
 
-[k3s](https://k3s.io) supports Rootless mode using our Usernetes patchset.
+[k3s](https://k3s.io) supports Rootless mode experimentally.
 
 See https://rancher.com/docs/k3s/latest/en/advanced/#running-k3s-with-rootless-mode-experimental
 
+## Manual deployment ("Hard way")
+
+See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-in-userns/#userns-the-hard-way
