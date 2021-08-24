@@ -34,7 +34,9 @@ Requires `sudo`.
 
 {{< tabs >}}
 {{< tab "apt-get" >}}
-See [here](https://podman.io/getting-started/installation)
+```console
+$ sudo apt-get install -y podman
+```
 {{< /tab >}}
 {{< tab "dnf" >}}
 
