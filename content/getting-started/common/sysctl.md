@@ -2,15 +2,16 @@
 title: Configure sysctl
 weight: 20
 ---
-Debian, Arch, and RHEL/CentOS 7 are known to require reconfiguration of sysctl
+Old versions of Debian, Arch, and RHEL/CentOS are known to require reconfiguration of sysctl
 to enable [User Namespaces](/how-it-works/userns/).
 
 {{< tabs "sysctl" >}}
-{{< tab "Debian GNU/Linux" >}}
+{{< tab "Debian GNU/Linux 10" >}}
 {{< hint info >}}
 **Note**
 
-These steps are *not* needed for Ubuntu.
+These steps are *not* needed for Debian 11.
+These steps are also *not* needed for Ubuntu.
 {{< /hint>}}
 Create `/etc/sysctl.d/99-rootless.conf` with the following content:
 ```
