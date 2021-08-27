@@ -42,7 +42,7 @@ $ sudo loginctl enable-linger $(whoami)
 ## [Optional] Enable dbus user session
 
 Enabling dbus user session is typically needed for using systemd and cgroup v2.
-
+Otherwise runc may fail with an error like `read unix @->/run/systemd/private: read: connection reset by peer: unknown.`
 
 ```console
 $ systemctl --user is-active dbus
@@ -54,16 +54,15 @@ active
 
 ```console
 $ sudo apt-get install -y dbus-user-session
-$ systemctl --user enable dbus
-$ systemctl --user start dbus
 ```
 {{< /tab >}}
 {{< tab "dnf" >}}
 
 ```console
 $ sudo dnf install -y dbus-daemon
-$ systemctl --user enable dbus
-$ systemctl --user start dbus
 ```
 {{< /tab >}}
 {{< /tabs >}}
+
+In most cases, the dbus user session should be automatically enabled after installing the package above and relogging in.
+If not, try running `systemctl --user enable --now dbus`.
