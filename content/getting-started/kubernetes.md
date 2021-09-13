@@ -15,7 +15,33 @@ See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-in-userns
 
 ## kind
 
-See https://kind.sigs.k8s.io/docs/user/rootless/
+kind supports running Kubernetes inside Rootless Docker/Podman on cgroup v2 hosts.
+
+Docker:
+```console
+$ dockerd-rootless-setuptool.sh install
+$ docker context use rootless
+$ kind create cluster
+```
+
+Podman:
+```console
+$ KIND_EXPERIMENTAL_PROVIDER=podman kind create cluster
+```
+
+See https://kind.sigs.k8s.io/docs/user/rootless/ for the further information.
+
+## minikube
+
+minikube supports running Kubernetes inside Rootless Docker on cgroup v2 hosts.
+
+```console
+$ dockerd-rootless-setuptool.sh install
+$ docker context use rootless
+$ minikube start --driver=docker --container-runtime=containerd
+```
+
+See https://minikube.sigs.k8s.io/docs/drivers/docker/ for the further information.
 
 ## Usernetes
 
