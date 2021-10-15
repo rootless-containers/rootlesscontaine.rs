@@ -26,8 +26,7 @@ The following distributions are known to use cgroup v2 by default:
 - Arch Linux (since April 2021)
 - openSUSE Tumbleweed (since c. 2021)
 - Debian GNU/Linux (since 11)
-
-[Ubuntu 21.10](https://bugs.launchpad.net/ubuntu/+source/snapd/+bug/1850667) is also planned to use cgroup v2 by default.
+- Ubuntu (since 21.10)
 
 ## Enabling cgroup v2
 
