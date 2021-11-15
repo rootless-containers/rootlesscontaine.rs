@@ -22,6 +22,7 @@ The `$XDG_RUNTIME_DIR` environmental variable is set when:
 The environmental variable is _not_ set when:
 * Logged in as the root, and then switched to a non-root user via `su -l <user>`
 * Logged in as the root, and then switched to a non-root user via `sudo -u <user>`
+* Logged in as the root, and then switched to a non-root user via `ksu <user>`
 
 {{< hint info >}}
 **TL;DR**
