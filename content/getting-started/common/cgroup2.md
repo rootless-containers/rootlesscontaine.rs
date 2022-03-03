@@ -38,6 +38,7 @@ To boot the host with cgroup v2, add the following string to the `GRUB_CMDLINE_L
 ```
 systemd.unified_cgroup_hierarchy=1
 ```
+For ubuntu on azure, you should add this in `/etc/default/grub.d/50-cloudimg-settings.cfg`
 
 ## Enabling CPU, CPUSET, and I/O delegation
 
