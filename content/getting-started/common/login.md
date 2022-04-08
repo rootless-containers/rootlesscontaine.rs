@@ -66,4 +66,5 @@ $ sudo dnf install -y dbus-daemon
 {{< /tabs >}}
 
 In most cases, the dbus user session should be automatically enabled after installing the package above and relogging in.
-If not, try running `systemctl --user enable --now dbus`.
+If not, try running `systemctl --user start dbus`.
+On some distributions, you may need `systemctl --user enable --now dbus` too.
