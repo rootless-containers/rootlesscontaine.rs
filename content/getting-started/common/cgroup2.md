@@ -27,6 +27,7 @@ The following distributions are known to use cgroup v2 by default:
 - openSUSE Tumbleweed (since c. 2021)
 - Debian GNU/Linux (since 11)
 - Ubuntu (since 21.10)
+- RHEL and RHEL-like distributions (since 9)
 
 ## Enabling cgroup v2
 
