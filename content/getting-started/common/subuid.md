@@ -5,7 +5,7 @@ weight: 30
 
 Rootless Containers implementations mostly expect `/etc/subuid` to contain at least 65,536 subuids.
 
-In the following example, 65,536 subuids (100000-165535) are allocated for a user named "user1".
+In the following example, 65,536 subuids (100000-65535) are allocated for a user named "user1".
 
 ```console
 $ cat /etc/subuid
