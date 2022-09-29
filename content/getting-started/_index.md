@@ -17,6 +17,6 @@ Mid-level & Low-level runtimes:
 
 Others:
 - [LXC](./lxc)
-- [Singularity](./singularity)
+- [Apptainer](./apptainer)
 - [udocker](./udocker)
 - [Kubernetes](./kubernetes)
