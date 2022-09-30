@@ -1,5 +1,5 @@
 ---
-title: Apptainer
+title: Apptainer/Singularity
 weight: 50
 ---
 
@@ -51,3 +51,11 @@ of the features that are only available in this mode (such as encrypted image fi
 See https://apptainer.org/docs/admin/main/user_namespace.html#unprivileged-installations
 ## Apptainer fakeroot mode
 See https://apptainer.org/docs/user/main/fakeroot.html
+
+## SingularityCE fork
+
+There is also an open source fork of the project (from before it was renamed to Apptainer) called
+[SingularityCE](https://github.com/sylabs/singularity).
+It has the same three modes as Apptainer, but setuid mode is the default.
+Also the only fakeroot mode it supports is the one using `/etc/subuid` and `/etc/subgid` mappings,
+not the mode using the `fakeroot` command.
