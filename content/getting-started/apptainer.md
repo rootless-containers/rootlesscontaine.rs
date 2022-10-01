@@ -10,7 +10,7 @@ Please read [the common steps](../common) first.
 {{< /hint>}}
 
 Apptainer (formerly known as Singularity) provides three modes for running containers as a non-root user:
-1. User namespace mode (the default, or `apptainer exec --userns` with suid installation)
+1. User namespace mode (the default since version 1.1.0, or `apptainer exec --userns` with suid installation)
 2. Fakeroot mode (`apptainer exec --fakeroot`)
 3. Setuid mode (install extra apptainer-suid component)
 
