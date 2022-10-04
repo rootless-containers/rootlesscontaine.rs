@@ -41,7 +41,7 @@ when the root user inside a container is mapped to the root user outside the con
 - [Podman rootless-mode](./getting-started/podman)
 - [BuildKit rootless-mode](./getting-started/buildkit)
 - [LXC unprivileged-mode](./getting-started/lxc)
-- [Singularity userns-mode or fakeroot-mode](./getting-started/singularity)
+- [Apptainer userns-mode or fakeroot-mode](./getting-started/apptainer)
 
 Click the links for tutorials.
 
@@ -53,7 +53,7 @@ Click the links for tutorials.
 - Kaniko
 - Makisu
 - LXD unprivileged-mode
-- Singularity setuid-mode
+- Apptainer setuid-mode
 
 <!--
 TODO: do we consider UML to be an implementation of Rootless Containers or not?
