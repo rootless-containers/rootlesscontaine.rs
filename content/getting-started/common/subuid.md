@@ -30,15 +30,13 @@ from those directories.
 An example python program to generate the files:
 
 ```python
-f = open("/etc/subuid", "w")
-for uid in range(1000, 65536):
-    f.write("%d:%d:65536\n" %(uid,uid*65536))
-f.close()
+with open("/etc/subuid", "w") as f:
+    for uid in range(1000, 65536):
+        f.write("%d:%d:65536\n" %(uid,uid*65536))
 
-f = open("/etc/subgid", "w")
-for uid in range(1000, 65536):
-    f.write("%d:%d:65536\n" %(uid,uid*65536))
-f.close()
+with open("/etc/subgid", "w") as f:
+    for uid in range(1000, 65536):
+        f.write("%d:%d:65536\n" %(uid,uid*65536))
 ```
 
 When doing this, however, it's important to note that duplicate entries will be added to the files
