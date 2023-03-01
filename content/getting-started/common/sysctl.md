@@ -1,7 +1,14 @@
 ---
-title: Configure sysctl
-weight: 20
+title: "[Optional] sysctl"
+weight: 50
 ---
+
+{{< hint info >}}
+**Note**
+
+Configuring sysctl is optional for most distributions.
+{{< /hint>}}
+
 Old versions of Debian, Arch, and RHEL/CentOS are known to require reconfiguration of sysctl
 to enable [User Namespaces](/how-it-works/userns/).
 
@@ -59,7 +66,7 @@ $ sudo sysctl --system
 {{< /tabs >}}
 
 
-## [Optional] allowing ping
+## Allowing ping
 Most distributions do not allow non-root users to send ICMP Echo Request packets (aka `ping`) by default.
 
 To allow running `ping` without root, create `/etc/sysctl.d/99-rootless.conf` with the following content:
@@ -72,7 +79,7 @@ Then run the following command to reload the new sysctl configuration:
 $ sudo sysctl --system
 ```
 
-## [Optional] allowing listening on TCP & UDP ports below 1024
+## Allowing listening on TCP & UDP ports below 1024
 Most distributions do not allow non-root users to listen on TCP & UDP ports below 1024.
 e.g. listening on 80/tcp would fail with "permission denied", while listening on 8080/tcp would success.
 
