@@ -61,3 +61,40 @@ $ sudo dnf install -y shadow-utils
 ```
 {{< /tab >}}
 {{< /tabs >}}
+
+
+## Advanced information
+### Specific subuid range for systemd-homed users
+
+When the user's home directory is managed by [`systemd-homed`](https://wiki.archlinux.org/title/Systemd-homed),
+the subuid range has to be typically chosen from 524288-1878982656 (i.e., 0x80000-0x6fff0000).
+
+{{< hint info >}}
+**Am I using `systemd-homed` ?**
+
+If you have `~/.identity` in your home directory, your home directory is probably managed by `systemd-homed`.
+
+Otherwise your home directory is not managed by `systemd-homed` (even if `systemd-homed` process is running),
+and you can just skip reading this section.
+
+In 2023, no well-known Linux distribution seems using `systemd-homed` by default.
+{{< /hint>}}
+
+The following example allocates 65,536 subuids for 524288-589823 (0x80000-0x8ffff).
+```
+user1:524288:65536
+```
+
+To obtain the correct subuid range for `systemd-homed` users, run `userdbctl` and see the "begin container users" line
+and the "end container users" line:
+
+```console
+$ userdbctl
+   NAME                           DISPOSITION        UID   GID REALNAME                     HOME             SHELL
+   root                           intrinsic            0     0 -                            /root            /bin/bash
+...
+┌─ ↓ begin container users ↓      container       524288     - First container user         -                -
+└─ ↑ end container users ↑        container   1878982656     - Last container user          -                -
+```
+
+The range is decided on the compilation time of [systemd](https://github.com/systemd/systemd/blob/v253/meson_options.txt#L246-L249).
