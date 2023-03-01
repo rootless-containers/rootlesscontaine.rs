@@ -1,6 +1,8 @@
 ---
 title: Apptainer/Singularity
 weight: 50
+aliases:
+  - singularity
 ---
 
 {{< hint info >}}
