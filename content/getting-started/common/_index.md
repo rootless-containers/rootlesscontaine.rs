@@ -7,6 +7,6 @@ Setting up Rootless Containers doesn't need the root privileges basically, but s
 may need the root for the initial set-up.
 
 - [Logging in](./login)
-- [Configuring sysctl values](./sysctl)
 - [/etc/subuid and /etc/subgid](./subuid)
 - [[Optional] cgroup v2](./cgroup2)
+- [[Optional] Configuring sysctl values](./sysctl)
