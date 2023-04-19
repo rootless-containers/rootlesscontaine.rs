@@ -94,6 +94,12 @@ Also, you need to run `sudo loginctl enable-linger ...`. See [Getting Started/Lo
 
 Run the following commands to remove all containers and configurations:
 ```console
+$ podman system reset
+```
+
+The command might not be available with very old podman versions. For old
+releases, run the following commands instead:
+```console
 $ podman rm -f $(podman ps -a -q)
 $ podman unshare rm -rf ~/.local/share/containers ~/.config/containers
 ```
