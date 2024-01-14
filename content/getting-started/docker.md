@@ -23,45 +23,32 @@ Especially, make sure [`$XDG_RUNTIME_DIR`](../common/login/) to be set properly.
 {{< /hint>}}
 
 
-The official installation script can be executed by a non-root user without `sudo`.
 
 {{< tabs >}}
-{{< tab "Stable" >}}
-```console
-$ curl -o rootless-install.sh -fsSL https://get.docker.com/rootless
-$ sh rootless-install.sh
-$ export PATH=$HOME/bin:$PATH
-```
-{{< /tab >}}
-{{< tab "Test" >}}
-```console
-$ curl -o rootless-install.sh -fsSL https://get.docker.com/rootless
-$ CHANNEL=test sh rootless-install.sh
-$ export PATH=$HOME/bin:$PATH
-```
-{{< /tab >}}
-{{< tab "Nightly" >}}
-```console
-$ curl -o rootless-install.sh -fsSL https://get.docker.com/rootless
-$ CHANNEL=nightly rootless-install.sh
-$ export PATH=$HOME/bin:$PATH
-```
-{{< /tab >}}
-{{< tab "RPMs/DEBs" >}}
-Docker 20.10 provides `docker-ce-rootless-extras` RPMs and DEBs that can be installed by the root for all the users on the host.
+{{< tab "With RPMs/DEBs" >}}
+Docker (since 20.10) provides `docker-ce-rootless-extras` RPMs and DEBs that can be installed by the root for all the users on the host.
+The package is usually automatically installed on installing Docker from <https://get.docker.com>.
 
 ```console
 $ curl -o install.sh -fsSL https://get.docker.com
 $ sudo sh install.sh
-$ sudo apt-get install -y docker-ce-rootless-extras
 ```
 
-After installing RPMs/DEBS, run the following command as a non-root user to create the systemd user-instance unit:
+After installing Docker, run the following command as a non-root user to create the systemd user-instance unit:
 
 ```console
 $ dockerd-rootless-setuptool.sh install
 ```
 
+{{< /tab >}}
+{{< tab "Without RPMs/DEBs" >}}
+This method does not use RPMs/DEBS and can be executed by a non-root user without `sudo`.
+
+```console
+$ curl -o rootless-install.sh -fsSL https://get.docker.com/rootless
+$ sh rootless-install.sh
+$ export PATH=$HOME/bin:$PATH
+```
 {{< /tab >}}
 {{< /tabs >}}
 
@@ -107,9 +94,9 @@ To impose resource limitations without cgroup, see https://docs.docker.com/engin
 Docker/Moby uses [slirp4netns](/glossary#slirp4netns) as the default network stack if slirp4netns v0.4.0 or later is installed.
 Otherwise it falls back to [VPNKit](/glossary#vpnkit).
 
-If slirp4netns is not installed on your host, download [the official slirp4netns binary](https://github.com/rootless-containers/slirp4netns)
+slirp4netns is usually automatically installed on installing the `docker-ce-rootless-extras` package.
+If slirp4netns is not automatically installed, run `sudo apt-get install slirp4netns`, `sudo dnf install slirp4netns`, or download [the official slirp4netns binary](https://github.com/rootless-containers/slirp4netns)
 to `~/bin` so that Docker/Moby can pick it up automatically. The functionalities are same as VPNKit, but slirp4netns is known to have better throughput.
-However, slirp4netns is not included in the Docker package because they did not want to distribute slirp4netns's GPL2 binary along with Apache License 2.0 binaries.
 
 Docker/Moby also supports [lxc-user-nic SETUID binary](/glossary#lxc-user-nic) experimentally: https://docs.docker.com/engine/security/rootless/#changing-the-network-stack
 
@@ -146,7 +133,11 @@ $ dockerd-rootless-setuptool.sh uninstall
 $ ~/bin/rootlesskit rm -rf ~/.local/share/docker ~/.config/docker
 ```
 
-To uninstall binaries, remove the following files under `~/bin`:
+To uninstall binaries, run `sudo apt-get remove docker-ce-*`
+or `sudo dnf remove docker-ce-*`.
+
+If you installed Rootless Docker without using packages,
+remove the following files under `~/bin`:
 ```
 containerd
 containerd-shim
