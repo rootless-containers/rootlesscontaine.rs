@@ -10,3 +10,4 @@ may need the root for the initial set-up.
 - [/etc/subuid and /etc/subgid](./subuid)
 - [[Optional] cgroup v2](./cgroup2)
 - [[Optional] Configuring sysctl values](./sysctl)
+- [[Optional] Configuring AppArmor (Ubuntu 24.04 or later)](./apparmor)
