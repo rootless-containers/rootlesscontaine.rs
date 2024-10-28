@@ -18,8 +18,8 @@ These subuids and subgids are typically automatically configured by the system.
 
 If subuids and subgids are not configured, you need to edit `/etc/subuid` and `/etc/subgid` directly with a text editor:
 
-```console
-$ sudo vi /etc/subuid
+```bash
+sudo vi /etc/subuid
 ```
 
 Pre-generating all possible values for /etc/subuid and /etc/subgid, based on uid and gid, rather than the user 
@@ -50,14 +50,14 @@ These binaries are typically installed by default.
 {{< tabs "uidmap" >}}
 {{< tab "apt-get" >}}
 
-```console
-$ sudo apt-get install -y uidmap
+```bash
+sudo apt-get install -y uidmap
 ```
 {{< /tab >}}
 {{< tab "dnf" >}}
 
-```console
-$ sudo dnf install -y shadow-utils
+```bash
+sudo dnf install -y shadow-utils
 ```
 {{< /tab >}}
 {{< /tabs >}}

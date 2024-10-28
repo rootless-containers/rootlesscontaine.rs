@@ -29,25 +29,25 @@ Especially, make sure [`$XDG_RUNTIME_DIR`](../common/login/) to be set properly.
 Docker (since 20.10) provides `docker-ce-rootless-extras` RPMs and DEBs that can be installed by the root for all the users on the host.
 The package is usually automatically installed on installing Docker from <https://get.docker.com>.
 
-```console
-$ curl -o install.sh -fsSL https://get.docker.com
-$ sudo sh install.sh
+```bash
+curl -o install.sh -fsSL https://get.docker.com
+sudo sh install.sh
 ```
 
 After installing Docker, run the following command as a non-root user to create the systemd user-instance unit:
 
-```console
-$ dockerd-rootless-setuptool.sh install
+```bash
+dockerd-rootless-setuptool.sh install
 ```
 
 {{< /tab >}}
 {{< tab "Without RPMs/DEBs" >}}
 This method does not use RPMs/DEBS and can be executed by a non-root user without `sudo`.
 
-```console
-$ curl -o rootless-install.sh -fsSL https://get.docker.com/rootless
-$ sh rootless-install.sh
-$ export PATH=$HOME/bin:$PATH
+```bash
+curl -o rootless-install.sh -fsSL https://get.docker.com/rootless
+sh rootless-install.sh
+export PATH=$HOME/bin:$PATH
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -61,15 +61,15 @@ To connect to the rootless daemon, you need to set either the CLI context or an 
 
 {{< tabs "docker-cli-config" >}}
 {{< tab "CLI context (Modern)" >}}
-```console
-$ docker context use rootless
-$ docker run hello-world
+```bash
+docker context use rootless
+docker run hello-world
 ```
 {{< /tab >}}
 {{< tab "Env var (Classic)" >}}
-```console
-$ export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
-$ docker run hello-world
+```bash
+export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+docker run hello-world
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -116,9 +116,9 @@ Environment="DOCKERD_ROOTLESS_ROOTLESSKIT_PORT_DRIVER=slirp4netns"
 
 And then restart the daemon:
 
-```console
-$ systemctl --user daemon-reload 
-$ systemctl --user restart docker
+```bash
+systemctl --user daemon-reload 
+systemctl --user restart docker
 ```
 
 ### Starting containers on boot
@@ -128,9 +128,9 @@ You need to run `sudo loginctl enable-linger ...`. See [Getting Started/Login](/
 ### Resetting to factory settings
 
 Run the following commands to remove all containers and configurations:
-```console
-$ dockerd-rootless-setuptool.sh uninstall
-$ ~/bin/rootlesskit rm -rf ~/.local/share/docker ~/.config/docker
+```bash
+dockerd-rootless-setuptool.sh uninstall
+~/bin/rootlesskit rm -rf ~/.local/share/docker ~/.config/docker
 ```
 
 To uninstall binaries, run `sudo apt-get remove docker-ce-*`

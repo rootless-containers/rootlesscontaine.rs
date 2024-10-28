@@ -41,8 +41,8 @@ Create `/etc/sysctl.d/99-rootless.conf` with the following content:
 kernel.unprivileged_userns_clone=1
 ```
 Then run the following command to reload the new sysctl configuration:
-```console
-$ sudo sysctl --system
+```bash
+sudo sysctl --system
 ```
 {{< /tab >}}
 {{< tab "RHEL/CentOS 7">}}
@@ -58,8 +58,8 @@ user.max_user_namespaces=28633
 <!-- nobody knows the origin of the 28633 magic value, lol -->
 
 Then run the following command to reload the new sysctl configuration:
-```console
-$ sudo sysctl --system
+```bash
+sudo sysctl --system
 ```
 
 {{< /tab >}}
@@ -75,8 +75,8 @@ net.ipv4.ping_group_range = 0 2147483647
 ```
 
 Then run the following command to reload the new sysctl configuration:
-```console
-$ sudo sysctl --system
+```bash
+sudo sysctl --system
 ```
 
 ## Allowing listening on TCP & UDP ports below 1024
@@ -89,7 +89,7 @@ net.ipv4.ip_unprivileged_port_start=0
 ```
 
 Then run the following command to reload the new sysctl configuration:
-```console
-$ sudo sysctl --system
+```bash
+sudo sysctl --system
 ```
 

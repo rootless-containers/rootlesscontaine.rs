@@ -18,15 +18,15 @@ See https://kubernetes.io/docs/tasks/administer-cluster/kubelet-in-userns
 kind supports running Kubernetes inside Rootless Docker/Podman on cgroup v2 hosts.
 
 Docker:
-```console
-$ dockerd-rootless-setuptool.sh install
-$ docker context use rootless
-$ kind create cluster
+```bash
+dockerd-rootless-setuptool.sh install
+docker context use rootless
+kind create cluster
 ```
 
 Podman:
-```console
-$ KIND_EXPERIMENTAL_PROVIDER=podman kind create cluster
+```bash
+KIND_EXPERIMENTAL_PROVIDER=podman kind create cluster
 ```
 
 See https://kind.sigs.k8s.io/docs/user/rootless/ for the further information.
@@ -35,10 +35,10 @@ See https://kind.sigs.k8s.io/docs/user/rootless/ for the further information.
 
 minikube supports running Kubernetes inside Rootless Docker on cgroup v2 hosts.
 
-```console
-$ dockerd-rootless-setuptool.sh install
-$ docker context use rootless
-$ minikube start --driver=docker --container-runtime=containerd
+```bash
+dockerd-rootless-setuptool.sh install
+docker context use rootless
+minikube start --driver=docker --container-runtime=containerd
 ```
 
 See https://minikube.sigs.k8s.io/docs/drivers/docker/ for the further information.
@@ -49,12 +49,13 @@ See https://minikube.sigs.k8s.io/docs/drivers/docker/ for the further informatio
 
 See https://github.com/rootless-containers/usernetes
 
-```console
-$ tar xjvf usernetes-x86_64.tbz
-$ cd usernetes
-$ ./install.sh --cri=containerd
-$ export KUBECONFIG="$HOME/.config/usernetes/master/admin-localhost.kubeconfig"
-$ kubectl apply -f manifests/*.yaml
+<!-- FIXME: outdated -->
+```bash
+tar xjvf usernetes-x86_64.tbz
+cd usernetes
+./install.sh --cri=containerd
+export KUBECONFIG="$HOME/.config/usernetes/master/admin-localhost.kubeconfig"
+kubectl apply -f manifests/*.yaml
 ```
 
 ## k3s
