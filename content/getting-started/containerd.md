@@ -72,8 +72,8 @@ Created symlink /home/exampleuser/.config/systemd/user/default.target.wants/cont
 
 ## Usage
 
-```console
-$ nerdctl run hello-world
+```bash
+nerdctl run hello-world
 ```
 
 Unlike rootless Docker, you do *NOT* need to specify `$CONTAINERD_ADDRESS` explicitly.
@@ -108,9 +108,9 @@ Environment="CONTAINERD_ROOTLESS_ROOTLESSKIT_PORT_DRIVER=slirp4netns"
 
 And then restart the daemon:
 
-```console
-$ systemctl --user daemon-reload 
-$ systemctl --user restart containerd
+```bash
+systemctl --user daemon-reload 
+systemctl --user restart containerd
 ```
 
 ### Starting containers on boot
@@ -120,9 +120,9 @@ You need to run `sudo loginctl enable-linger ...`. See [Getting Started/Login](/
 ### Resetting to factory settings
 
 Run the following commands to remove all containers and configurations:
-```console
-$ containerd-rootless-setuptool.sh uninstall
-$ rootlesskit rm -rf ~/.local/share/containerd ~/.local/share/nerdctl ~/.config/containerd
+```bash
+containerd-rootless-setuptool.sh uninstall
+rootlesskit rm -rf ~/.local/share/containerd ~/.local/share/nerdctl ~/.config/containerd
 ```
 
 ## Further information

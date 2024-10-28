@@ -34,14 +34,14 @@ Requires `sudo`.
 
 {{< tabs >}}
 {{< tab "apt-get" >}}
-```console
-$ sudo apt-get install -y podman
+```bash
+sudo apt-get install -y podman
 ```
 {{< /tab >}}
 {{< tab "dnf" >}}
 
-```console
-$ sudo dnf install -y podman
+```bash
+sudo dnf install -y podman
 ```
 {{< /tab >}}
 {{< /tabs >}}
@@ -55,8 +55,8 @@ without `sudo`.
 
 Just run `podman` command.
 
-```console
-$ podman run docker.io/library/hello-world
+```bash
+podman run docker.io/library/hello-world
 ```
 
 ## Tips
@@ -93,15 +93,15 @@ Also, you need to run `sudo loginctl enable-linger ...`. See [Getting Started/Lo
 ### Resetting to factory settings
 
 Run the following commands to remove all containers and configurations:
-```console
-$ podman system reset
+```bash
+podman system reset
 ```
 
 The command might not be available with very old podman versions. For old
 releases, run the following commands instead:
-```console
-$ podman rm -f $(podman ps -a -q)
-$ podman unshare rm -rf ~/.local/share/containers ~/.config/containers
+```bash
+podman rm -f $(podman ps -a -q)
+podman unshare rm -rf ~/.local/share/containers ~/.config/containers
 ```
 
 To uninstall binaries, remove `podman` package with the package manager.

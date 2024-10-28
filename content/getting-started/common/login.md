@@ -36,8 +36,8 @@ Use `machinectl shell <user>@` or `ssh <user>@localhost` instead.
 
 To run containers automatically on system start-up, the following command needs to be executed.
 
-```console
-$ sudo loginctl enable-linger $(whoami)
+```bash
+sudo loginctl enable-linger $(whoami)
 ```
 
 ## [Optional] Enable dbus user session
@@ -53,14 +53,14 @@ active
 {{< tabs "sysctl" >}}
 {{< tab "apt-get" >}}
 
-```console
-$ sudo apt-get install -y dbus-user-session
+```bash
+sudo apt-get install -y dbus-user-session
 ```
 {{< /tab >}}
 {{< tab "dnf" >}}
 
-```console
-$ sudo dnf install -y dbus-daemon
+```bash
+sudo dnf install -y dbus-daemon
 ```
 {{< /tab >}}
 {{< /tabs >}}

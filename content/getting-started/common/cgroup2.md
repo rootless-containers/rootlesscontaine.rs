@@ -51,13 +51,13 @@ memory pids
 
 To allow delegation of other controllers such as `cpu`, `cpuset`, and `io`, run the following commands:
 
-```console
-$ sudo mkdir -p /etc/systemd/system/user@.service.d
-$ cat <<EOF | sudo tee /etc/systemd/system/user@.service.d/delegate.conf
+```bash
+sudo mkdir -p /etc/systemd/system/user@.service.d
+cat <<EOF | sudo tee /etc/systemd/system/user@.service.d/delegate.conf
 [Service]
 Delegate=cpu cpuset io memory pids
 EOF
-$ sudo systemctl daemon-reload
+sudo systemctl daemon-reload
 ```
 
 Delegating `cpuset` is recommended as well as `cpu`. Delegating `cpuset` requires systemd 244 or later.
