@@ -5,6 +5,11 @@ weight: 30
 
 Rootless OverlayFS is supported since [kernel 5.11](https://github.com/torvalds/linux/commit/459c7c565ac36ba09ffbf24231147f408fde4203).
 
+<details>
+<summary>Historical information for kernel prior to 5.11</summary>
+
+<p>
+
 Older kernel releases didn't support rootless OverlayFS,
 though [Ubuntu](https://kernel.ubuntu.com/git/ubuntu/ubuntu-bionic.git/commit/fs/overlayfs?id=3b7da90f28fe1ed4b79ef2d994c81efbc58f1144)
 supports it by patching the kernel.
@@ -15,3 +20,7 @@ However, Debian version of rootless OverlayFS (before kernel 5.11) is [known to 
 while Ubuntu version seems stable.
 
 On other distros, Rootless Containers typically use [fuse-overlayfs](/glossary#fuse-overlayfs) instead of the real OverlayFS.
+
+</p>
+
+</details>
