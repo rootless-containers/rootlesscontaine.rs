@@ -12,6 +12,8 @@ but it doesn't support limiting resources with cgroup.
 
 Docker 20.10 added support for limiting resources using cgroup v2.
 
+Docker 23 further simplified the installation process.
+
 ## Installation
 
 {{< hint info >}}
@@ -55,9 +57,31 @@ export PATH=$HOME/bin:$PATH
 
 ## Usage
 
-For backward compatibility, the `docker` CLI attempts to connect to the rootful daemon by default.
+Starting with Docker v23, the `docker` CLI connects to the rootless daemon by default when it is available.
 
-To connect to the rootless daemon, you need to set either the CLI context or an environment variable.
+Run `docker info` to confirm that the `docker` CLI is connecting to the rootless daemon:
+
+```console
+$ docker info
+Client: Docker Engine - Community
+ Version:    28.3.3
+ Context:    rootless
+...
+Server:
+...
+ Security Options:
+  seccomp
+   Profile: builtin
+  rootless
+  cgroupns
+...
+```
+
+<details>
+<summary>Historical information for Docker prior to v23</summary>
+<p>
+
+To connect to the rootless daemon, you had to set either the CLI context or an environment variable.
 
 {{< tabs "docker-cli-config" >}}
 {{< tab "CLI context (Modern)" >}}
@@ -73,6 +97,9 @@ docker run hello-world
 ```
 {{< /tab >}}
 {{< /tabs >}}
+
+</p>
+</details>
 
 
 To start/stop the daemon, use `systemctl --user <start|stop> docker` instead of `systemctl <start|stop> docker`.
