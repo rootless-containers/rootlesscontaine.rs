@@ -4,9 +4,13 @@ weight: 10
 ---
 
 Most Rootless Containers implementations need the `$XDG_RUNTIME_DIR` environmental variable to be set.
-When the environment variable is not set, features related to systemd and cgroups are unlikely to work properly.
+When the environment variable is not set, the features related to `systemd` and `cgroups` are unlikely
+to work properly:
 
-The value is typically set to `/run/user/$UID` automatically by systemd or elogind on logging into the host.
+ * `docker run --cpus, --memory, --pids-limit`
+
+The `$XDG_RUNTIME_DIR` value is typically set to `/run/user/$UID` automatically by `systemd` or
+`elogind` on logging into the host.
 
 Run the following command to confirm:
 ```console
