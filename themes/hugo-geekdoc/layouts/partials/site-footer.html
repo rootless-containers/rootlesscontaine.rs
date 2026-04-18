@@ -1,18 +1,28 @@
 <footer class="gdoc-footer">
-    <div class="container flex flex-wrap">
-        <span class="gdoc-footer__item">
-            Built with <a href="https://gohugo.io/" class="gdoc-footer__link">Hugo</a> and
-            <svg class="icon heart"><use xlink:href="#heart"></use></svg>
-        </span>
-        {{ with .Site.Params.GeekdocLegalNotice }}
-        <span class="gdoc-footer__item">
+    <div class="container flex flex-wrap align-center justify-between" style="width: 100%;">
+        
+        <div class="gdoc-footer__item flex align-center">
+            <span>Built with <a href="https://gohugo.io/" class="gdoc-footer__link">Hugo</a> and</span>
+            <svg class="icon heart" style="height: 1rem; width: 1rem; fill: #ffffff; margin-left: 0.4rem; margin-bottom: 0.15rem;">
+                <use xlink:href="#heart"></use>
+            </svg>
+        </div>
+
+        {{ $repo := default (default false .Site.Params.GeekdocRepo) .Page.Params.GeekdocRepo }}
+        {{ if $repo }}
+        <div class="gdoc-footer__item flex align-center" style="gap: 0.25rem;">
+            <svg class="icon github" style="height: 1.2rem; width: 1.2rem; margin-bottom: 0.3rem;">
+                <use xlink:href="#github"></use>
+            </svg>
+            <span>Rootless and open source. <a href="{{ $repo }}" class="gdoc-footer__link" target="_blank" rel="noopener">Find it on GitHub.</a></span>
+        </div>
+        {{ end }}
+
+        <div class="gdoc-footer__item">
+            {{ with .Site.Params.GeekdocLegalNotice }}
             <a href="{{ . | relURL }}" class="gdoc-footer__link">Legal Notice</a>
-        </span>
-        {{ end }}
-        {{ with .Site.Params.GeekdocPrivacyPolicy }}
-        <span class="gdoc-footer__item">
-            <a href="{{ . | relURL }}" class="gdoc-footer__link">Privacy Policy</a>
-        </span>
-        {{ end }}
+            {{ end }}
+        </div>
+        
     </div>
 </footer>
