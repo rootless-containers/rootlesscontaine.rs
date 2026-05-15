@@ -11,11 +11,13 @@ The following table shows the feature implementation status of Rootless Podman:
 |  1.1   | Added support for port forwarding (`podman run -p`)
 |  1.5   | Added support for cgroup v2
 |  2.1   | Added support for multi-container networking (`podman create network`)
+|  5.0   | Switched the default networking from slirp4netns to pasta
+|  6.0 (planned) | Removed the support for slirp4netns
 
 {{< hint info >}}
 **FAQ: Docker/Moby vs Podman?**
 
-Until recently, Docker/Moby had lacked support for cgroup v2, and on the other hand
+Until 2020, Docker/Moby had lacked support for cgroup v2, and on the other hand
 Podman had lacked support for multi-container networking.
 
 As of October 2020, the two projects implement almost the same features with regard
@@ -70,12 +72,19 @@ Resource-related flags of `podman run`, such as `--cpus`, `--memory`, `--blkio-w
 
 To impose resource limitations without cgroup, see https://docs.docker.com/engine/security/rootless/#limiting-resources (read `docker` as `podman`)
 
-### Changing the port forwarder
+### Preserving source IP addresses of incoming connections
+
+{{< hint info >}}
+**Note**
+
+This section does not apply to Podman v6.0 or later, which plans to use pasta as the default port forwarder. https://github.com/containers/podman/pull/28478
+{{< /hint>}}
+<!-- TODO: rewrite this section after the release of Podman v6.0 -->
 
 Podman uses [RootlessKit](/glossary#rootlesskit) as the default port forwarder.
 
 However, as explained in [How it works](/how-it-works/netns/incoming/), sometimes
-slirp4netns port forwarder is preferred over RootlessKit port forwarder.
+slirp4netns port forwarder is preferred over RootlessKit port forwarder, because RootlessKit did not support propagating the original source IP address of incoming connections until RootlessKit v3.0.
 
 To change the port forwarder to slirp4netns, run `podman run` with `--network slirp4netns:port_handler=slirp4netns`.
 

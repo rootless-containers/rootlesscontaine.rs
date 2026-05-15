@@ -50,6 +50,7 @@ See https://minikube.sigs.k8s.io/docs/drivers/docker/ for the further informatio
 See https://github.com/rootless-containers/usernetes
 
 <!-- FIXME: outdated -->
+<!--
 ```bash
 tar xjvf usernetes-x86_64.tbz
 cd usernetes
@@ -57,6 +58,7 @@ cd usernetes
 export KUBECONFIG="$HOME/.config/usernetes/master/admin-localhost.kubeconfig"
 kubectl apply -f manifests/*.yaml
 ```
+-->
 
 ## k3s
 

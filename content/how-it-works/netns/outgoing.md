@@ -30,10 +30,11 @@ Several slirp implementations are used by Rootless Containers:
 
 - [slirp4netns](/glossary#slirp4netns)
 - [VPNKit](/glossary#vpnkit)
-
-[slirp4netns is known to have significantly better throughput than VPNKit.](https://github.com/rootless-containers/slirp4netns#benchmarks)
+- [pasta](/glossary#pasta)
+- [gvisor-tap-vsock](/glossary#gvisor-tap-vsock)
 
 Docker/Moby uses slirp4netns by default when slirp4netns is installed.
-Otherwise falls back to VPNKit.
+Otherwise falls back to VPNKit, pasta, or gvisor-tap-vsock in that order.
 
-Podman only supports slirp4netns.
+Podman uses pasta by default since v5.0.
+Historically, Podman only supported slirp4netns.

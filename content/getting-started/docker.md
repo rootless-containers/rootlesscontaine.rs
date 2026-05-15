@@ -14,6 +14,8 @@ Docker 20.10 added support for limiting resources using cgroup v2.
 
 Docker 23 further simplified the installation process.
 
+Docker 29.5 added support for `--net=host` and improved the support for propagating the original source IP address of incoming connections.
+
 ## Installation
 
 {{< hint info >}}
@@ -119,22 +121,57 @@ To impose resource limitations without cgroup, see https://docs.docker.com/engin
 
 ### Changing the network stack
 Docker/Moby uses [slirp4netns](/glossary#slirp4netns) as the default network stack if slirp4netns v0.4.0 or later is installed.
-Otherwise it falls back to [VPNKit](/glossary#vpnkit).
+Otherwise it falls back to [VPNKit](/glossary#vpnkit), [pasta](/glossary#pasta), or [gvisor-tap-vsock](/glossary#gvisor-tap-vsock) in that order.
 
-slirp4netns is usually automatically installed on installing the `docker-ce-rootless-extras` package.
-If slirp4netns is not automatically installed, run `sudo apt-get install slirp4netns`, `sudo dnf install slirp4netns`, or download [the official slirp4netns binary](https://github.com/rootless-containers/slirp4netns)
-to `~/bin` so that Docker/Moby can pick it up automatically. The functionalities are same as VPNKit, but slirp4netns is known to have better throughput.
+To explicitly specify the network stack, create `~/.config/systemd/user/docker.service.d/override.conf` with the following content:
+
+```
+[Service]
+Environment="DOCKERD_ROOTLESS_ROOTLESSKIT_NET=gvisor-tap-vsock"
+```
+
+And then restart the daemon:
+
+```bash
+systemctl --user daemon-reload
+systemctl --user restart docker
+```
 
 Docker/Moby also supports [lxc-user-nic SETUID binary](/glossary#lxc-user-nic) experimentally: https://docs.docker.com/engine/security/rootless/#changing-the-network-stack
 
-### Changing the port forwarder
+### Preserving source IP addresses of incoming connections
 
-Docker/Moby uses [RootlessKit](/glossary#rootlesskit) as the default port forwarder.
+Docker/Moby uses [RootlessKit](/glossary#rootlesskit) as the default port forwarder,
+but RootlessKit did not support propagating the original source IP address of incoming connections until RootlessKit v3.0 that is bundled with Docker v29.5.
 
-However, as explained in [How it works](/how-it-works/netns/incoming/), sometimes
-slirp4netns port forwarder is preferred over RootlessKit port forwarder.
+For prior versions, you had to change the port forwarder to slirp4netns or pasta to keep source IP addresses of incoming connections.
 
-To change the port forwarder to slirp4netns, create `~/.config/systemd/user/docker.service.d/override.conf` with the following content:
+{{< tabs "preserve-src-ip" >}}
+{{< tab "v29.5 or later" >}}
+
+RootlessKit v3.0 bundled with Docker v29.5 added the support for propagating the original source IP address of incoming connections, so there is no reason to use slirp4netns or pasta
+port forwarder anymore.
+
+However, the source IP propagation requires disabling the userland proxy:
+
+```bash
+mkdir -p ~/.config/docker
+echo '{"userland-proxy": false}' >~/.config/docker/daemon.json
+systemctl --user restart docker
+```
+
+You may also need to load the `br_netfilter` kernel module:
+
+```bash
+sudo tee /etc/modules-load.d/docker.conf <<EOF >/dev/null
+br_netfilter
+EOF
+sudo systemctl restart systemd-modules-load.service
+```
+
+{{< /tab >}}
+{{< tab "Prior versions (slirp4netns)" >}}
+Create `~/.config/systemd/user/docker.service.d/override.conf` with the following content:
 
 ```
 [Service]
@@ -144,9 +181,29 @@ Environment="DOCKERD_ROOTLESS_ROOTLESSKIT_PORT_DRIVER=slirp4netns"
 And then restart the daemon:
 
 ```bash
-systemctl --user daemon-reload 
+systemctl --user daemon-reload
 systemctl --user restart docker
 ```
+{{< /tab >}}
+{{< tab "Prior versions (pasta)" >}}
+Create `~/.config/systemd/user/docker.service.d/override.conf` with the following content:
+
+```
+[Service]
+Environment="DOCKERD_ROOTLESS_ROOTLESSKIT_NET=pasta"
+Environment="DOCKERD_ROOTLESS_ROOTLESSKIT_PORT_DRIVER=implicit"
+```
+
+(The port driver is called "implicit" in RootlessKit, because the ports are handled by pasta, not RootlessKit itself.)
+
+And then restart the daemon:
+
+```bash
+systemctl --user daemon-reload
+systemctl --user restart docker
+```
+{{< /tab >}}
+{{< /tabs >}}
 
 ### Starting containers on boot
 

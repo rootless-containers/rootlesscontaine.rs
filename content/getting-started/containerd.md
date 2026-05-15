@@ -92,14 +92,19 @@ Resource-related flags of `nerdctl run`, such as `--cpus`, `--memory`, `--blkio-
 
 To impose resource limitations without cgroup, see https://docs.docker.com/engine/security/rootless/#limiting-resources
 
-### Changing the port forwarder
+### Preserving source IP addresses of incoming connections
 
 containerd uses [RootlessKit](/glossary#rootlesskit) as the default port forwarder.
 
-However, as explained in [How it works](/how-it-works/netns/incoming/), sometimes
-slirp4netns port forwarder is preferred over RootlessKit port forwarder.
+RootlessKit v3.0 added the support for propagating the original source IP address of incoming connections, so there is no reason to use slirp4netns port forwarder anymore.
 
-To change the port forwarder to slirp4netns, create `~/.config/systemd/user/containerd.service.d/override.conf` with the following content:
+<details>
+<summary>Historical information for RootlessKit prior to v3.0</summary>
+<p>
+
+If you are using an old RootlessKit version, you can change the port forwarder to slirp4netns as follows to keep source IP addresses of incoming connections:
+
+Create `~/.config/systemd/user/containerd.service.d/override.conf` with the following content:
 
 ```
 [Service]
@@ -112,6 +117,9 @@ And then restart the daemon:
 systemctl --user daemon-reload 
 systemctl --user restart containerd
 ```
+
+</p>
+</details>
 
 ### Starting containers on boot
 

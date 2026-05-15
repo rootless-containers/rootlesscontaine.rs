@@ -34,6 +34,12 @@ FUSE-OverlayFS is mostly used for allowing rootless OverlayFS on old kernels (< 
 
 See [How it works/OverlayFS](../how-it-works/overlayfs/).
 
+## G
+#### gvisor-tap-vsock
+A [slirp](#slirp) implementation written in pure Go, based on [gVisor](https://gvisor.dev/)'s network stack.
+
+Web site: https://github.com/containers/gvisor-tap-vsock
+
 ## N
 #### Network Namespaces
 See [How it works/Network Namespaces](../how-it-works/netns/).
@@ -45,11 +51,19 @@ See [How it works/User Namespaces](../how-it-works/userns/).
 ### lxc-user-nic
 See [How it works/Network Namespaces/Outgoing Connections](../how-it-works/netns/outgoing).
 
+## P
+#### pasta
+Yet another [slirp](#slirp) implementation, focusing on performance.
+
+pasta is used by Podman as the default networking mode since v5.0.
+
+Web site: https://passt.top
+
 ## R
 #### rootless-cni-infra
-A sandbox container used for implementing multi-container networking for Podman.
+A sandbox container used for implementing multi-container networking for Podman (prior to v3.2).
 
-Web site: https://github.com/containers/podman/tree/master/contrib/rootless-cni-infra
+Web site: https://github.com/containers/podman/tree/v3.1/contrib/rootless-cni-infra
 
 #### Rootless Containers
 When we say Rootless Containers, it means running the entire container runtime as well as the containers without the root privileges.
@@ -76,6 +90,12 @@ with a small number of exceptions such as `newuidmap` and `newgidmap`.
 A technique to translate Ethernet packets to unprivileged TCP/IP socket syscalls.
 Widely used by virtual machine implementations such as QEMU and Rootless Container implementations.
 
+Several implementations are known:
+- [slirp4netns](/glossary#slirp4netns)
+- [VPNKit](/glossary#vpnkit)
+- [pasta](/glossary#pasta)
+- [gvisor-tap-vsock](/glossary#gvisor-tap-vsock)
+
 Note that the modern usage of "slirp" has signifantly changed since the original release of "slirp" in 1995.
 The original slirp in 1995 was used for connecting PCs w/o Ethernet devices to the Internet via a dial-up shell account,
 by emulating SLIP/PPP.
@@ -86,7 +106,7 @@ See also [How it works/Network Namespaces](../how-it-works/netns/).
 
 #### slirp4netns
 Our implementation of [slirp](#slirp) optimized for Rootless Containers.
-Used by Docker/Moby (when installed) and Podman.
+Used by Docker/Moby (when installed) and Podman (prior to v6.0).
 
 Web site: https://github.com/rootless-containers/slirp4netns
 
@@ -110,7 +130,7 @@ See [How it works/User Namespaces](../how-it-works/userns/).
 #### VPNKit
 An OCaml implementation of [slirp](#slirp), used by Rootless Docker/Moby when [slirp4netns](#slirp4netns) is not installed.
 
-Aside from Rootless Docker/Moby, VPNKit is also used by Docker for Mac/Win for connecting the LinuxKit VM to the Internet.
+Aside from Rootless Docker/Moby, VPNKit was historically used by Docker for Mac/Win for connecting the LinuxKit VM to the Internet.
 
 See also [How it works/User Namespaces](../how-it-works/userns/).
 
