@@ -29,12 +29,20 @@
             </span>
         {{ end }}
     </span>
-    <span>
+    <span style="display: flex; flex-direction: column; align-items: flex-end;">
         {{ if $showEdit }}
-            <svg class="icon code"><use xlink:href="#code"></use></svg>
-            <a href="{{ $geekdocRepo }}/{{ $geekdocEditPath }}/{{ $.Scratch.Get "geekdocFilePath" }}">
-                Edit this page
-            </a>
+            <div style="display: flex; align-items: center;">
+                <svg class="icon code"><use xlink:href="#code"></use></svg>
+                <a href="{{ $geekdocRepo }}/{{ $geekdocEditPath }}/{{ $.Scratch.Get "geekdocFilePath" }}">
+                    Edit this page
+                </a>
+            </div>
+        {{ end }}
+        
+        {{ if not .Lastmod.IsZero }}
+            <span style="font-size: 0.7rem; color: #666; margin-top: 6px;">
+                Last updated: {{ .Lastmod.Format "January 2, 2006" }}
+            </span>
         {{ end }}
     </span>
 </div>
